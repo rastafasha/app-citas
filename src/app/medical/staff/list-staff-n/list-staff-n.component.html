@@ -58,10 +58,10 @@
                                         
                                         <th mat-sort-header="name">Nobre</th>
                                         <th mat-sort-header="email">email</th>
-                                        <th mat-sort-header="name">Especialización</th>
-                                        <th mat-sort-header="name">Teléfono</th>
-                                        <th mat-sort-header="department">Role</th>
-                                        <th mat-sort-header="specialization">Creación</th>
+                                        <th mat-sort-header="especializacion">Especialización</th>
+                                        <th mat-sort-header="telefono">Teléfono</th>
+                                        <th mat-sort-header="role">Role</th>
+                                        <th mat-sort-header="created">Creación</th>
                                          <th ></th> <!--acciones -->
                                     </tr>
                                 </thead>
@@ -71,7 +71,7 @@
                                         <td>{{data.name + ' ' + (data.surname ? data.surname: '')}}</td>
                                         <td>{{data.email}}</td>
                                         <td>{{data.education}}</td>
-                                        <td>{{data.phone}}</td>
+                                        <td>{{data.mobile}}</td>
                                         <td>{{data.roles.name}}</td>
                                         <!-- <td>{{data.permision_pluck.length > 0 ? data.permision_pluck: 'TODOS LOS PERMISOS' }}</td> -->
                                         <td>{{data.created_at | date }}</td>

@@ -14,7 +14,7 @@ export class EditStaffNComponent {
 
   public name: string = '';
   public surname: string = '';
-  public phone: string = '';
+  public mobile: any;ß
   public email: string = '';
   public password: string = '';
   public password_confirmation: string = '';
@@ -57,7 +57,7 @@ export class EditStaffNComponent {
       this.name = this.staff_selected.name;
       this.selectedValue = this.staff_selected.roles.id;
       this.surname = this.staff_selected.surname;
-        this.phone = this.staff_selected.phone;
+        this.mobile = this.staff_selected.mobile;
         this.email = this.staff_selected.email;
         this.birth_date = new Date(this.staff_selected.birth_date).toISOString();
         this.education = this.staff_selected.education;
@@ -107,7 +107,7 @@ export class EditStaffNComponent {
 
     formData.append('name', this.name);
     formData.append('surname', this.surname);
-    formData.append('phone', this.phone);
+    formData.append('mobile', this.mobile);
     formData.append('email', this.email);
     formData.append('birth_date', this.birth_date);
     formData.append('gender', this.gender+'');

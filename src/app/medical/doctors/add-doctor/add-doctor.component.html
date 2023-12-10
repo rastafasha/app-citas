@@ -41,7 +41,7 @@
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
                                         <label >Mobile <span class="login-danger">*</span></label>
-                                        <input class="form-control" name="phone" [(ngModel)]="phone" type="text"  >
+                                        <input class="form-control" name="mobile" [(ngModel)]="mobile" type="text"  >
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-6">
@@ -137,7 +137,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12" *ngIf="valid_form">
-                                    <div class="form-group row" *ngIf="valid_form_success">
+                                    <div class="form-group row" *ngIf="text_success">
                                         <div class="col-md-12">
                                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                                 <strong>Exito!</strong> El Usuario se ha creado correctamente.
@@ -174,96 +174,40 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>8AM</td>
-                                                            <ng-container *ngFor="let day of days_week">
-                                                                <td>8AM/TODOS
-                                                                    <br>
-                                                                        <div class="checkbox">
-                                                                            <label>
-                                                                                <input type="checkbox" name="checkbox" > 8:00 - 8:15 Am
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="checkbox">
-                                                                            <label>
-                                                                                <input type="checkbox" name="checkbox" > 8:15 - 8:30 Am
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="checkbox">
-                                                                            <label>
-                                                                                <input type="checkbox" name="checkbox" > 8:30 - 8:45 Am
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="checkbox">
-                                                                            <label>
-                                                                                <input type="checkbox" name="checkbox" > 8:45 - 9:00 Am
-                                                                            </label>
-                                                                        </div>
-
+                                                        <ng-container *ngFor="let hours_day of hours_days">
+                                                            <tr>
+                                                                <td>
+                                                                    
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                                                            <input type="checkbox" name="checkbox"  (change)="addHourAllDay($event,hours_day)"> {{hours_day.format_hour}}
+                                                                        </label>
+                                                                    </div>
                                                                 </td>
-                                                                
-                                                            </ng-container>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>9AM</td>
-                                                            <ng-container *ngFor="let day of days_week">
-                                                                <td>9AM/TODOS
-                                                                    <br>
-                                                                    <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox" name="checkbox" > 9:00 - 9:15 Am
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox" name="checkbox" > 9:15 - 9:30 Am
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox" name="checkbox" > 9:30 - 9:45 Am
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox" name="checkbox" > 9:45 - 10:00 Am
-                                                                        </label>
-                                                                    </div>
-
-                                                                </td>
-                                                                
-                                                            </ng-container>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>10AM</td>
-                                                            <ng-container *ngFor="let day of days_week">
-                                                                <td>10AM/TODOS
-                                                                    <br>
-                                                                    <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox" name="checkbox" > 10:00 - 10:15 Am
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox" name="checkbox" > 10:15 - 10:30 Am
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox" name="checkbox" > 10:30 - 10:45 Am
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox" name="checkbox" > 10:45 - 11:00 Am
-                                                                        </label>
-                                                                    </div>
-
-                                                                </td>
-                                                                
-                                                            </ng-container>
-                                                        </tr>
+                                                                <ng-container *ngFor="let day of days_week">
+                                                                    <td>
+                                                                        <div class="checkbox">
+                                                                            <label>
+                                                                                <input type="checkbox" name="checkbox" [checked]="isCheckedHourAll(hours_day, day)" (click)="addHourAll(hours_day,day)"> {{hours_day.hour}}:TODOS
+                                                                            </label>
+                                                                        </div>
+                                                                        
+                                                                        <br>
+                                                                        <ng-container *ngFor="let item of hours_day.items">
+                                                                            <div class="checkbox">
+                                                                                <label>
+                                                                                    <input type="checkbox" name="checkbox" [checked]="isCheckedHour(hours_day,day,item)" (click)="addHourItem(hours_day,day,item)"> {{item.format_hour_start}} - {{item.format_hour_end}}
+                                                                                </label>
+                                                                            </div>
+                                                                        </ng-container>
+                                                                            
+    
+                                                                    </td>
+                                                                    
+                                                                </ng-container>
+                                                            </tr>
+                                                        </ng-container>
+                                                        
                                                     </tbody>
                                                 </table>
                                             </div>

@@ -356,13 +356,6 @@ export class DataService {
           img: 'assets/img/icons/menu-icon-03.svg',
           subMenus: [
             {
-              menuValue: 'Patients List',
-              route: routes.patientsList,
-              base: routes.patientsList,
-              permision: 'list_patient',
-              show_nav: true,
-            },
-            {
               menuValue: 'Add Patients',
               route: routes.addPatient,
               base: routes.addPatient,
@@ -370,26 +363,19 @@ export class DataService {
               show_nav: true,
             },
             {
-              menuValue: 'Edit Patients',
-              route: '',
-              base: '',
-              permision: 'edit_patient',
-              show_nav: false,
-            },
-            {
-              menuValue: 'Delete Patients',
-              route: '',
-              base: '',
-              permision: 'delete_patient',
-              show_nav: false,
-            },
-            {
-              menuValue: 'Patients Profile',
-              route: routes.patientProfile,
-              base: routes.patientProfile,
-              permision: 'profile_patient',
+              menuValue: 'Patients List',
+              route: routes.patientsList,
+              base: routes.patientsList,
+              permision: 'list_patient',
               show_nav: true,
             },
+            // {
+            //   menuValue: 'Patients Profile',
+            //   route: routes.patientProfile,
+            //   base: routes.patientProfile,
+            //   permision: 'profile_patient',
+            //   show_nav: true,
+            // },
           ],
         },
        

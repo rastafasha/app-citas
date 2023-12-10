@@ -251,8 +251,11 @@ export class routes {
   public static get viewInvoice(): string {
     return this.baseUrl + '/invoice/view-invoice';
   }
+  // public static get addPatient(): string {
+  //   return this.baseUrl + '/patient/add-patient';
+  // }
   public static get addPatient(): string {
-    return this.baseUrl + '/patient/add-patient';
+    return this.baseUrl + '/patients/add';
   }
   public static get editPatient(): string {
     return this.baseUrl + '/patient/edit-patient';
@@ -263,8 +266,11 @@ export class routes {
   public static get patientSetting(): string {
     return this.baseUrl + '/patient/patient-setting';
   }
+  // public static get patientsList(): string {
+  //   return this.baseUrl + '/patient/patients-list';
+  // }
   public static get patientsList(): string {
-    return this.baseUrl + '/patient/patients-list';
+    return this.baseUrl + '/patients/list';
   }
   public static get addSalary(): string {
     return this.baseUrl + '/payroll/add-salary';

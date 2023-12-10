@@ -14,7 +14,7 @@ export class AddStaffNComponent {
 
   public name: string = '';
   public surname: string = '';
-  public phone: string = '';
+  public mobile: string = '';
   public email: string = '';
   public password: string = '';
   public password_confirmation: string = '';
@@ -80,7 +80,7 @@ export class AddStaffNComponent {
 
     formData.append('name', this.name);
     formData.append('surname', this.surname);
-    formData.append('phone', this.phone);
+    formData.append('mobile', this.mobile);
     formData.append('email', this.email);
     formData.append('password', this.password);
     formData.append('birth_date', this.birth_date);
@@ -102,7 +102,7 @@ export class AddStaffNComponent {
 
         this.name = '';
         this.surname = '';
-        this.phone = '';
+        this.mobile = '';
         this.email = '';
         this.password = '';
         this.birth_date = '';
