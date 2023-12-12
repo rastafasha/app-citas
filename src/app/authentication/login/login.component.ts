@@ -46,9 +46,7 @@ export class LoginComponent implements OnInit {
           console.log(resp);
           if(resp){
             //login exitoso
-            setTimeout(()=>{
-              this.router.navigate([routes.adminDashboard]);
-            }, 50);
+            this.router.navigate([routes.adminDashboard]);
 
           }else{
             //login fallido

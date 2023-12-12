@@ -8,7 +8,7 @@
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a [routerLink]="routes.adminDashboard">Dashboard </a></li>
                         <li class="breadcrumb-item"><i class="feather icon-chevron-right"></i></li>
-                        <li class="breadcrumb-item active">Patient List</li>
+                        <li class="breadcrumb-item active">Appointment List</li>
                     </ul>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                             <div class="row align-items-center">
                                 <div class="col">
                                     <div class="doctor-table-blk">
-                                        <h3>Patient List</h3>
+                                        <h3>Appointment List</h3>
                                         <div class="doctor-search-blk">
                                             <div class="top-nav-search table-search-blk">
                                                     <input  class="form-control" placeholder="Search here" [(ngModel)]="searchDataValue"
@@ -34,7 +34,7 @@
                                                     <a class="btn"><img src="assets/img/icons/search-normal.svg" alt=""></a>
                                             </div>
                                             <div class="add-group">
-                                                <a routerLink="/patients/add" class="btn btn-primary add-pluss ms-2"><img src="assets/img/icons/plus.svg" alt=""></a>
+                                                <a routerLink="/appointments/add" class="btn btn-primary add-pluss ms-2"><img src="assets/img/icons/plus.svg" alt=""></a>
                                                 <a href="javascript:;" (click)="PageSize()" class="btn btn-primary doctor-refresh ms-2"><img src="assets/img/icons/re-fresh.svg" alt=""></a>
                                             </div>
                                         </div>
@@ -56,30 +56,30 @@
                                 <thead>
                                     <tr>
                                         
-                                        <th mat-sort-header="name">Nobre</th>
-                                        <th mat-sort-header="email">email</th>
-                                        <th mat-sort-header="especializacion">Especialización</th>
-                                        <th mat-sort-header="telefono">Teléfono</th>
-                                        <th mat-sort-header="n_doc">N. Documento</th>
+                                        <th mat-sort-header="name">Doctor</th>
+                                        <th mat-sort-header="email">Paciente</th>
+                                        <th mat-sort-header="especializacion">Fecha</th>
+                                        <th mat-sort-header="telefono">Hora</th>
+                                        <th mat-sort-header="n_doc">Especialidad</th>
                                         <th mat-sort-header="created">Creación</th>
                                          <th ></th> <!--acciones -->
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let data of patientList">
+                                    <tr *ngFor="let data of appointmentList">
                                         
-                                        <td>{{data.name + ' ' + (data.surname ? data.surname: '')}}</td>
-                                        <td>{{data.email}}</td>
-                                        <td>{{data.education}}</td>
-                                        <td>{{data.phone}}</td>
-                                        <td>{{data.n_doc}}</td>
+                                        <td>{{data.doctor.full_name}}</td>
+                                        <td>{{data.patient.full_name}}</td>
+                                        <td>{{data.date_appointment_format}}</td>
+                                        <td>{{data.segment_hour.format_segment.format_hour_start + ' - ' + data.segment_hour.format_segment.format_hour_end}}</td>
+                                        <td>{{data.speciality.name}}</td>
                                         <td>{{data.created_at | date }}</td>
                                         
                                         <td class="text-end">
                                             <div class="dropdown dropdown-action" >
                                                 <a href="javascript:void(0);" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" [routerLink]="['/patients/list/edit/', data.id]"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" [routerLink]="['/appointments/list/edit/', data.id]"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
                                                     <a class="dropdown-item" href="javascript:void(0);" (click)="selectUser(data)" 
                                                     data-bs-toggle="modal" 
                                                     [attr.data-bs-target]="'#delete_staff-'+data.id"
@@ -95,7 +95,7 @@
                                               <div class="modal-content">
                                                   <div class="modal-body text-center">
                                                       <img src="assets/img/sent.png" alt="" width="50" height="46">
-                                                      <h3 *ngIf="patient_selected">Are you sure want to delete this patient {{patient_selected.email}}?</h3>
+                                                      <h3 *ngIf="appointment_selected">Are you sure want to delete this appointment {{appointment_selected.id}}?</h3>
                                                       <!-- validacion si esta en uso -->
                                                       <div class="form-group row" *ngIf="text_validation">
                                                         <div class="col-md-12">
@@ -212,7 +212,7 @@
                                           disabled:
                                             currentPage ===
                                               pageNumberArray[pageNumberArray.length - 1] ||
-                                              patientList.length === 0
+                                              appointmentList.length === 0
                                         }"
                                       >
                                         <a

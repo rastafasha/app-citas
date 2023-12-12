@@ -77,7 +77,7 @@ export class AddPatientMComponent {
 
   save(){
     this.text_validation = '';
-    if(!this.name ||!this.surname ||this.n_doc ){
+    if(!this.name ||!this.surname || !this.n_doc ){
       this.text_validation = 'Los campos con * son obligatorios';
       return;
     }
@@ -167,7 +167,7 @@ export class AddPatientMComponent {
     this.valid_form_success = false;
     this.text_validation = '';
 
-    this.patientService.createUser(formData).subscribe((resp:any)=>{
+    this.patientService.createPatient(formData).subscribe((resp:any)=>{
       console.log(resp);
       if(resp.message == 403){
         this.text_validation = resp.message_text;
@@ -198,6 +198,7 @@ export class AddPatientMComponent {
         this.fr = 0;
         this.peso = 0;
         this.current_desease = '';
+        this.FILE_AVATAR = '';
         this.valid_form_success = true;
       }
     })

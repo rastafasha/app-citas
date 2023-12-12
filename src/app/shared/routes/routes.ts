@@ -65,14 +65,23 @@ export class routes {
   public static get activities(): string {
     return this.baseUrl + '/activities';
   }
+  // public static get addAppointment(): string {
+  //   return this.baseUrl + '/appointments/add-appointment';
+  // }
   public static get addAppointment(): string {
-    return this.baseUrl + '/appointments/add-appointment';
+    return this.baseUrl + '/appointments/add';
   }
+  // public static get appointmentList(): string {
+  //   return this.baseUrl + '/appointments/appointment-list';
+  // }
   public static get appointmentList(): string {
-    return this.baseUrl + '/appointments/appointment-list';
+    return this.baseUrl + '/appointments/list';
   }
+  // public static get editAppointment(): string {
+  //   return this.baseUrl + '/appointments/edit-appointment';
+  // }
   public static get editAppointment(): string {
-    return this.baseUrl + '/appointments/edit-appointment';
+    return this.baseUrl + '/appointments/edit';
   }
   public static get addAsset(): string {
     return this.baseUrl + '/assets/add-asset';

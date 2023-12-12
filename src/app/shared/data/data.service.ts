@@ -277,19 +277,20 @@ export class DataService {
           img: 'assets/img/icons/menu-icon-08.svg',
           subMenus: [
             {
-              menuValue: 'Staff List',
-              route: routes.staffList,
-              base: routes.staffList,
-              permision: 'list_staff',
-              show_nav: true,
-            },
-            {
               menuValue: 'Add Staff',
               route: routes.addStaff,
               base: routes.addStaff,
               permision: 'register_staff',
               show_nav: true,
             },
+            {
+              menuValue: 'Staff List',
+              route: routes.staffList,
+              base: routes.staffList,
+              permision: 'list_staff',
+              show_nav: true,
+            },
+            
             {
               menuValue: 'Edit Staff',
               route: '',
@@ -319,19 +320,20 @@ export class DataService {
           img: 'assets/img/icons/menu-icon-02.svg',
           subMenus: [
             {
-              menuValue: 'Doctor List',
-              route: routes.doctorsList,
-              base: routes.doctorsList,
-              permision: 'list_doctor',
-              show_nav: true,
-            },
-            {
               menuValue: 'Add Doctor',
               route: routes.addDoctor,
               base: routes.addDoctor,
               permision: 'register_doctor',
               show_nav: true,
             },
+            {
+              menuValue: 'Doctor List',
+              route: routes.doctorsList,
+              base: routes.doctorsList,
+              permision: 'list_doctor',
+              show_nav: true,
+            },
+            
             {
               menuValue: 'Edit Doctor',
               route: '',
@@ -387,19 +389,20 @@ export class DataService {
           img: 'assets/img/icons/menu-icon-04.svg',
           subMenus: [
             {
-              menuValue: 'Appointment List',
-              route: routes.appointmentList,
-              base: routes.appointmentList,
-              permision: 'list_appointment',
-              show_nav: true,
-            },
-            {
               menuValue: 'Book Appointment',
               route: routes.addAppointment,
               base: routes.addAppointment,
               permision: 'register_appointment',
               show_nav: true,
             },
+            {
+              menuValue: 'Appointment List',
+              route: routes.appointmentList,
+              base: routes.appointmentList,
+              permision: 'list_appointment',
+              show_nav: true,
+            },
+           
             {
               menuValue: 'Edit Appointment',
               route: '',
