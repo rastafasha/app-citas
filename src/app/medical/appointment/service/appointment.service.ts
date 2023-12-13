@@ -36,13 +36,13 @@ export class AppointmentService {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
     let LINK = "";
     if(search){
-      LINK+="?search="+search;
+      LINK+="&search="+search;
     }
     if(speciality_id){
-      LINK+="?speciality_id="+speciality_id;
+      LINK+="&speciality_id="+speciality_id;
     }
     if(date){
-      LINK+="?date="+date;
+      LINK+="&date="+date;
     }
     let URL = url_servicios+'/appointment?page='+page+LINK;
     return this.http.get(URL, {headers:headers});
@@ -61,7 +61,7 @@ export class AppointmentService {
   editAppointment(data:any, appointment_id:any){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
     let URL = url_servicios+"/appointment/update/"+appointment_id;
-    return this.http.post(URL,data,{headers:headers});
+    return this.http.put(URL,data,{headers:headers});
   }
 
   

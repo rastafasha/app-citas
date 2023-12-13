@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { routes } from 'src/app/shared/routes/routes';
-import { PatientMService } from '../../patient-m/service/patient-m.service';
 import { AppointmentService } from '../service/appointment.service';
 declare var $:any;
 @Component({
@@ -18,7 +17,7 @@ export class ListAppointmentsComponent {
   public showFilter = false;
   public searchDataValue = '';
   public lastIndex = 0;
-  public pageSize = 2;
+  public pageSize = 20;
   public totalDataPatient = 0;
   public skip = 0;
   public limit: number = this.pageSize;
@@ -35,6 +34,8 @@ export class ListAppointmentsComponent {
   public text_validation:any;
   public speciality_id:number= 0;
   public date = null;
+  specialities:any = [];
+  hours:any;
 
   constructor(
     public appointmentService: AppointmentService
@@ -43,6 +44,13 @@ export class ListAppointmentsComponent {
   }
   ngOnInit() {
     this.getTableData();
+    this.getSpecialities();
+  }
+
+  getSpecialities(){
+    this.appointmentService.listConfig().subscribe((resp:any)=>{
+      this.specialities = resp.specialities;
+    })
   }
 
   private getTableData(page=1): void {
@@ -166,6 +174,8 @@ export class ListAppointmentsComponent {
     this.currentPage = 1;
     this.getTableData();
     this.searchDataValue = '';
+    this.speciality_id = 0;
+    this.date= null;
   }
 
   private calculateTotalPages(totalDataPatient: number, pageSize: number): void {

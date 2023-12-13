@@ -17,7 +17,7 @@ export class ListPatientMComponent {
   public showFilter = false;
   public searchDataValue = '';
   public lastIndex = 0;
-  public pageSize = 2;
+  public pageSize = 20;
   public totalDataPatient = 0;
   public skip = 0;
   public limit: number = this.pageSize;

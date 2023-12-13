@@ -54,6 +54,11 @@ const routes: Routes = [
       import('./medical/appointment/appointment.module').then((m) => m.AppointmentModule),
   },
   {
+    path: 'appointment-pay',
+    loadChildren: () =>
+      import('./medical/appointment-pay/appointment-pay.module').then((m) => m.AppointmentPayModule),
+  },
+  {
     path: 'error',
     loadChildren: () =>
       import('./error/error.module').then((m) => m.ErrorModule),

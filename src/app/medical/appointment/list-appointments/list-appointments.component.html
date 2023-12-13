@@ -33,12 +33,32 @@
                                                     (ngModelChange)="searchData()">
                                                     <a class="btn"><img src="assets/img/icons/search-normal.svg" alt=""></a>
                                             </div>
-                                            <div class="add-group">
-                                                <a routerLink="/appointments/add" class="btn btn-primary add-pluss ms-2"><img src="assets/img/icons/plus.svg" alt=""></a>
-                                                <a href="javascript:;" (click)="PageSize()" class="btn btn-primary doctor-refresh ms-2"><img src="assets/img/icons/re-fresh.svg" alt=""></a>
-                                            </div>
+                                            
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group local-forms">
+                                    <label >Speciality <span class="login-danger">*</span></label>
+                                    <mat-select [(ngModel)]="speciality_id" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Speciality">
+                                        <mat-option *ngFor="let data of specialities" [value]="data.id">
+                                        {{data.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group local-forms">
+                                    <label >Fecha <span class="login-danger">*</span></label>
+                                    <input class="form-control datetimepicker" name="date" [(ngModel)]="date" type="date"   >
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="add-group">
+                                    <a href="#" onclick="return false" (click)="searchData()" class="btn btn-dark add-pluss ms-2">filtro</a>
+                                    <a routerLink="/appointments/add" class="btn btn-primary add-pluss ms-2"><img src="assets/img/icons/plus.svg" alt=""></a>
+                                    <a href="javascript:;" (click)="PageSize()" class="btn btn-primary doctor-refresh ms-2"><img src="assets/img/icons/re-fresh.svg" alt=""></a>
+                                </div>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="javascript:;" class=" me-2"><img src="assets/img/icons/pdf-icon-01.svg" alt=""></a>
