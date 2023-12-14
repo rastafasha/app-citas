@@ -40,6 +40,7 @@ export class AddStaffNComponent {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.getRoles();
   }
 

@@ -27,8 +27,8 @@ export class AddRoleUserComponent  {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
    this.sideBar = this.dataService.sideBar[0].menu;
-    
   }
 
   addPermission(subMenu:any){

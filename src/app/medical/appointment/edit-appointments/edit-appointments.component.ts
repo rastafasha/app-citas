@@ -51,6 +51,7 @@ export class EditAppointmentsComponent {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.getDatos();
     this.ativatedRoute.params.subscribe((resp:any)=>{
       this.appointment_id = resp.id;

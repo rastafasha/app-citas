@@ -4,6 +4,7 @@ import { PatientMComponent } from './patient-m.component';
 import { AddPatientMComponent } from './add-patient-m/add-patient-m.component';
 import { ListPatientMComponent } from './list-patient-m/list-patient-m.component';
 import { EditPatientMComponent } from './edit-patient-m/edit-patient-m.component';
+import { ProfilePatientMComponent } from './profile-patient-m/profile-patient-m.component';
 
 const routes: Routes = [
   {path:'', component:PatientMComponent,
@@ -16,6 +17,9 @@ const routes: Routes = [
     },
     {
       path:'list/edit/:id', component:EditPatientMComponent
+    },
+    {
+      path:'profile/:id', component:ProfilePatientMComponent
     },
     
   ]

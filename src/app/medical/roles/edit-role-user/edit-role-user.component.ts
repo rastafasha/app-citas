@@ -30,6 +30,7 @@ export class EditRoleUserComponent {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
    this.sideBar = this.dataService.sideBar[0].menu;
    this.ativatedRoute.params.subscribe((resp:any)=>{
     this.role_id = resp.id;

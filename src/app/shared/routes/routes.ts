@@ -107,8 +107,11 @@ export class routes {
   public static get editBlog(): string {
     return this.baseUrl + '/blogs/edit-blog';
   }
+  // public static get calendar(): string {
+  //   return this.baseUrl + '/calendar';
+  // }
   public static get calendar(): string {
-    return this.baseUrl + '/calendar';
+    return this.baseUrl + '/appointment-calendar/show';
   }
   public static get incomingCall(): string {
     return this.baseUrl + '/calls/incoming-call';

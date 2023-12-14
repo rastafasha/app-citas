@@ -42,6 +42,7 @@ export class ListRoleUserComponent {
 
   }
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.getTableData();
   }
   private getTableData(): void {

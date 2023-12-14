@@ -63,12 +63,21 @@ export class AppointmentService {
     let URL = url_servicios+"/appointment/update/"+appointment_id;
     return this.http.put(URL,data,{headers:headers});
   }
-
-  
-  
   deleteAppointment(appointment_id:any){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
     let URL = url_servicios+"/appointment/destroy/"+appointment_id;
     return this.http.delete(URL, {headers:headers});
+  }
+
+  //cita medica
+  registerAttention(data:any){
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let URL = url_servicios+"/appointment-atention/store";
+    return this.http.post(URL,data, {headers:headers});
+  }
+  showCitamedica(appointment_id:any){
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let URL = url_servicios+"/appointment-atention/show/"+appointment_id;
+    return this.http.get(URL,{headers:headers});
   }
 }

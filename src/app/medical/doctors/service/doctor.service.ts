@@ -41,6 +41,17 @@ export class DoctorService {
     let URL = url_servicios+"/doctors/update/"+doctor_id;
     return this.http.post(URL,data,{headers:headers});
   }
+  
+  showDoctorProfile(doctor_id:any){
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let URL = url_servicios+"/doctors/profile/"+doctor_id;
+    return this.http.get(URL,{headers:headers});
+  }
+  editDoctorProfile(data:any, doctor_id:any){
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let URL = url_servicios+"/staffs/update/"+doctor_id;
+    return this.http.post(URL,data,{headers:headers});
+  }
 
   
   

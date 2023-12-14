@@ -43,6 +43,7 @@ export class EditStaffNComponent {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.getRoles();
     this.ativatedRoute.params.subscribe((resp:any)=>{
       this.user_id = resp.id;

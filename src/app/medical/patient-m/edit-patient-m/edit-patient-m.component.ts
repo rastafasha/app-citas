@@ -63,6 +63,7 @@ export class EditPatientMComponent {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.ativatedRoute.params.subscribe((resp:any)=>{
       this.patient_id = resp.id;
      })

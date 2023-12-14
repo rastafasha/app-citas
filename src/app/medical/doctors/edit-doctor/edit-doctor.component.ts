@@ -73,6 +73,7 @@ export class EditDoctorComponent {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.activatedRoute.params.subscribe((resp:any)=>{
       console.log(resp);
       this.doctor_id = resp.id;
@@ -124,6 +125,7 @@ export class EditDoctorComponent {
 
   save(){
     this.text_validation = '';
+    this.text_success = '';
     if(!this.name||!this.email ||!this.surname ){
       this.text_validation = 'Los campos con * son obligatorios';
       return;

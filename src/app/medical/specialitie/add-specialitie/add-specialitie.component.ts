@@ -18,7 +18,7 @@ export class AddSpecialitieComponent {
     
   }
   ngOnInit(): void {
-
+    window.scrollTo(0, 0);
   }
 
   save(){

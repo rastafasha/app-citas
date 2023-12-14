@@ -49,6 +49,7 @@ export class AddAppointmentsComponent {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.appointmentService.listConfig().subscribe((resp:any)=>{
       this.hours = resp.hours;
       this.specialities = resp.specialities;

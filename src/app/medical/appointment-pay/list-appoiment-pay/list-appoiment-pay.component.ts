@@ -58,6 +58,7 @@ export class ListAppoimentPayComponent {
 
   }
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.getTableData();
     this.getSpecialities();
   }

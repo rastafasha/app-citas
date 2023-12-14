@@ -43,6 +43,7 @@ export class ListAppointmentsComponent {
 
   }
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.getTableData();
     this.getSpecialities();
   }

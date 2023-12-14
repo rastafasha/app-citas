@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AtencionMedicaComponent } from './atencion-medica/atencion-medica.component';
 
 
 @NgModule({
@@ -17,13 +18,15 @@ import { SharedModule } from 'src/app/shared/shared.module';
     AppointmentComponent,
     AddAppointmentsComponent,
     EditAppointmentsComponent,
-    ListAppointmentsComponent
+    ListAppointmentsComponent,
+    AtencionMedicaComponent
   ],
   exports: [
     AppointmentComponent,
     AddAppointmentsComponent,
     EditAppointmentsComponent,
-    ListAppointmentsComponent
+    ListAppointmentsComponent,
+    AtencionMedicaComponent
   ],
   imports: [
     CommonModule,

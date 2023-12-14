@@ -24,6 +24,7 @@ export class EditSpecialitieComponent {
     
   }
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.activedRoute.params.subscribe((resp:any) => {
       this.specialitie_id = resp.id;
     })

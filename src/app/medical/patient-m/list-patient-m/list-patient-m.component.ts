@@ -39,6 +39,7 @@ export class ListPatientMComponent {
 
   }
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.getTableData();
   }
 
