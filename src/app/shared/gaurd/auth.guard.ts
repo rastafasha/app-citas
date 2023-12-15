@@ -24,22 +24,22 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      // if (localStorage.getItem('authenticated')) {
-      //   return true;
-      // } else {
-      //   this.router.navigate([routes.login]);
-      //   return false;
-      // }
-      if(!localStorage.getItem('token') || !localStorage.getItem('user')){
+      if (localStorage.getItem('authenticated' )|| localStorage.getItem('user') || localStorage.getItem('token')) {
+        return true;
+      } else {
         this.router.navigate([routes.login]);
         return false;
       }
-      let token = this.auth.token;
-      let expiration = (JSON.parse(atob(token.split(".")[1]))).exp;
-      if(Math.floor((new Date().getTime())/1000) >= expiration){
-        this.auth.logout();
-        return false;
-      }
-      return true;
+      // if(!localStorage.getItem('token') || !localStorage.getItem('user')){
+      //   this.router.navigate([routes.login]);
+      //   return false;
+      // }
+      // let token = this.auth.token;
+      // let expiration = (JSON.parse(atob(token.split(".")[1]))).exp;
+      // if(Math.floor((new Date().getTime())/1000) >= expiration){
+      //   this.auth.logout();
+      //   return false;
+      // }
+      // return true;
   }
 }

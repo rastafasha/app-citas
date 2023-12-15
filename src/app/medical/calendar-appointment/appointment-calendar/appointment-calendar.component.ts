@@ -77,4 +77,8 @@ export class AppointmentCalendarComponent {
   public searchData() {
     this.getCalendar();
   }
+
+  reload(){
+    document.location.reload();
+  }
 }
