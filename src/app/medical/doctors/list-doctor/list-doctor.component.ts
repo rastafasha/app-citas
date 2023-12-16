@@ -50,7 +50,7 @@ export class ListDoctorComponent {
 
     this.doctorService.listDoctors().subscribe((resp:any)=>{
       
-      console.log(resp);
+      // console.log(resp);
 
       this.totalDatadoctor = resp.users.data.length;
       this.doctor_generals = resp.users.data;
@@ -81,7 +81,7 @@ export class ListDoctorComponent {
   deleteRol(){
 
     this.doctorService.deleteDoctor(this.doctor_selected.id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       if(resp.message == 403){
         this.text_validation = resp.message_text;

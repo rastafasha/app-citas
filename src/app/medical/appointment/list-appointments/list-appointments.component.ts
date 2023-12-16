@@ -59,7 +59,7 @@ export class ListAppointmentsComponent {
     this.serialNumberArray = [];
 
     this.appointmentService.listAppointments(page, this.searchDataValue, this.speciality_id, this.date).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       this.totalDataPatient = resp.total;
       this.appointmentList = resp.appointments.data;
@@ -91,7 +91,7 @@ export class ListAppointmentsComponent {
 
   deletePatient(){
     this.appointmentService.deleteAppointment(this.appointment_selected.id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       if(resp.message == 403){
         this.text_validation = resp.message_text;

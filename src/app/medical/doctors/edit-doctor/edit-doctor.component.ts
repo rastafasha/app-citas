@@ -75,7 +75,7 @@ export class EditDoctorComponent {
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.activatedRoute.params.subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.doctor_id = resp.id;
     });
 
@@ -84,13 +84,13 @@ export class EditDoctorComponent {
 
   getConfig(){
     this.doctorService.listConfig().subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.roles = resp.roles;
       this.specialities = resp.specialities;
       this.hours_days = resp.hours_days;
 
       this.doctorService.showDoctor(this.doctor_id).subscribe((resp:any)=>{
-        console.log(resp);
+        // console.log(resp);
         this.doctor_selected = resp.user;
 
         this.selectedValue = this.doctor_selected.roles.id;
@@ -187,7 +187,7 @@ export class EditDoctorComponent {
     formData.append("schedule_hours",JSON.stringify(HOUR_SCHEDULES));
 
     this.doctorService.editDoctor(formData, this.doctor_id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       
       if(resp.message == 403){
         this.text_validation = resp.message_text;

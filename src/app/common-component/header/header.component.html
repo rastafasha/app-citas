@@ -6,14 +6,14 @@
     </div>
     <a (click)="toggleSideBar()" id="toggle_btn" href="javascript:void(0);"><img src="assets/img/icons/bar-icon.svg"  alt=""></a>
     <a (click)="toggleMobileSideBar()" id="mobile_btn" class="mobile_btn float-start" ><img src="assets/img/icons/bar-icon.svg"  alt=""></a>
-    <div class="top-nav-search mob-view">
+    <!-- <div class="top-nav-search mob-view">
         <form>
             <input type="text" class="form-control" placeholder="Search here">
             <a class="btn" ><img src="assets/img/icons/search-normal.svg" alt=""></a>
         </form>
-    </div>
+    </div> -->
     <ul class="nav user-menu float-end">
-        <li class="nav-item dropdown d-none d-sm-block">
+        <!-- <li class="nav-item dropdown d-none d-sm-block">
             <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown"><img src="assets/img/icons/note-icon-02.svg" alt=""><span class="pulse"></span> </a>
             <div class="dropdown-menu notifications">
                 <div class="topnav-dropdown-header">
@@ -87,34 +87,39 @@
         </li>
         <li class="nav-item dropdown d-none d-sm-block">
             <a (click)="openBoxFunc()"  id="open_msg_box" class="hasnotifications nav-link"><img src="assets/img/icons/note-icon-01.svg" alt=""><span class="pulse"></span> </a>
-        </li>
+        </li> -->
         <li class="nav-item dropdown has-arrow user-profile-list">
             <a href="javascript:void(0);" class="dropdown-toggle nav-link user-link" data-bs-toggle="dropdown">
                 <div class="user-names">
                     <h5>{{user.name}} </h5>
-                    <span>Admin</span>
+                    <span>{{user.roles}}</span>
                 </div>
                 <span class="user-img">
-                    <img  src="assets/img/user-06.jpg"  alt="Admin">
+                    <div *ngIf="!usuario.avatar">
+                        <img  src="assets/img/user-06.jpg" >
+                    </div>
+                    <div *ngIf="usuario.avatar">
+                        <img  src="{{imagenSerUrl}}/{{usuario.avatar}}">
+                    </div>
                 </span>
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" [routerLink]="routes.profile">My Profile</a>
-                <a class="dropdown-item" [routerLink]="routes.editProfile">Edit Profile</a>
+                <a class="dropdown-item" [routerLink]="['/doctors/profile/', user.id]">My Profile</a>
+                <a class="dropdown-item" [routerLink]="['/doctors/list/edit/', user.id]">Edit Profile</a>
                 <a class="dropdown-item" [routerLink]="routes.settings">Settings</a>
                 <a class="dropdown-item" style="cursor: pointer;"(click)="logout()">Logout</a>
                 <!-- [routerLink]="routes.login" -->
             </div>
         </li>
-        <li class="nav-item ">
+        <!-- <li class="nav-item ">
             <a [routerLink]="routes.settings"  class="hasnotifications nav-link"><img src="assets/img/icons/setting-icon-01.svg" alt=""> </a>
-        </li>
+        </li> -->
     </ul>
     <div class="dropdown mobile-user-menu float-end">
         <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
         <div class="dropdown-menu dropdown-menu-end">
-            <a class="dropdown-item" [routerLink]="routes.profile">My Profile</a>
-            <a class="dropdown-item" [routerLink]="routes.editProfile">Edit Profile</a>
+            <a class="dropdown-item" [routerLink]="['/doctors/profile/', user.id]">My Profile</a>
+            <a class="dropdown-item" [routerLink]="['/doctors/list/edit/', user.id]">Edit Profile</a>
             <a class="dropdown-item" [routerLink]="routes.settings">Settings</a>
             <a class="dropdown-item" style="cursor: pointer;"(click)="logout()">Logout</a>
         </div>

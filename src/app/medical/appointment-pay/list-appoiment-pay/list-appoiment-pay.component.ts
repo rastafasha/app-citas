@@ -75,7 +75,7 @@ export class ListAppoimentPayComponent {
 
     this.appointmentpayService.listAppointmentPays(page, this.searchDataDoctor, this.searchDataValue, 
       this.speciality_id, this.date_start,this.date_end).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       this.totalDataPatient = resp.total;
       this.appointmentList = resp.appointmentpays.data;
@@ -164,12 +164,10 @@ export class ListAppoimentPayComponent {
         if(index != -1){
           data.payment[index] = resp.appoimentpay;
         }
-
         let INDEX = this.appointmentList.findIndex((appo:any)=>appo.id == data.id);
         if(INDEX != -1){
           this.appointmentList[INDEX].status_pay = !resp.appoimentpay.is_total_payment ? 2: 1;
         }
-
         this.amount_add = 0;
         this.method_payment = '';   
 
@@ -185,7 +183,7 @@ export class ListAppoimentPayComponent {
 
   deletePayment(data:any){
     this.appointmentpayService.deleteAppointmentPay(this.payment_selected.id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       if(resp.message == 403){
         this.text_validation = resp.message_text;

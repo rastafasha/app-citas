@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public routes = routes;
   public passwordClass = false;
  public ERROR = false;
+ public user:any;
   form = new FormGroup({
     email: new FormControl('superadmin@superadmin.com', [
       Validators.required,
@@ -28,12 +29,16 @@ export class LoginComponent implements OnInit {
   constructor(
     public auth: AuthService,
     public router:Router
-    ) {}
+    ) {
+      let USER = localStorage.getItem("user");
+    this.user = JSON.parse(USER ? USER: '');
+    }
 
   ngOnInit(): void {
     // if (localStorage.getItem('authenticated')) {
     //   localStorage.removeItem('authenticated');
     // }
+    localStorage.getItem('user')
   }
 
   loginFormSubmit() {
@@ -43,10 +48,16 @@ export class LoginComponent implements OnInit {
         this.form.value.email ? this.form.value.email :'',
         this.form.value.password ? this.form.value.password: ''
         ).subscribe((resp:any)=>{
-          console.log(resp);
+          // console.log(resp);
           if(resp){
             //login exitoso
-            this.router.navigate([routes.adminDashboard]);
+            if(this.user.roles == 'DOCTOR'){
+              this.router.navigate([routes.doctorDashboard]);
+
+            }else{
+              this.router.navigate([routes.adminDashboard]);
+
+            }
 
           }else{
             //login fallido

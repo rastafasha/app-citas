@@ -169,7 +169,7 @@ export class AddPatientMComponent {
     this.text_validation = '';
 
     this.patientService.createPatient(formData).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       if(resp.message == 403){
         this.text_validation = resp.message_text;
       }else{
@@ -200,7 +200,8 @@ export class AddPatientMComponent {
         this.peso = 0;
         this.current_desease = '';
         this.FILE_AVATAR = '';
-        this.valid_form_success = true;
+        // this.valid_form_success = true;
+        this.router.navigate(['/patients/list']);
       }
     })
 

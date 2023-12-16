@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { routes } from 'src/app/shared/routes/routes';
 import { SideBarService } from 'src/app/shared/side-bar/side-bar.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -15,11 +16,16 @@ export class HeaderComponent {
   public miniSidebar  = false;
   public addClass = false;
   public user:any;
+  public usuario:any;
+  public user_id:any;
+  public avatar:any;
 
+  imagenSerUrl = environment.url_media;
   constructor(
     public router: Router,
     private sideBar: SideBarService,
     public authService: AuthService,
+    public activatedRoute: ActivatedRoute,
     ) {
     this.sideBar.toggleSideBar.subscribe((res: string) => {
       if (res == 'true') {
@@ -34,6 +40,22 @@ export class HeaderComponent {
     console.log(this.user);
   }
 
+  ngOnInit(): void {
+    window.scrollTo(0, 0);
+    this.activatedRoute.params.subscribe((resp:any)=>{
+      // console.log(resp);
+      this.user_id = resp.id;
+    });
+    this.getDoctor();
+  }
+  
+  getDoctor(){
+    this.authService.getUserRomoto(this.user_id).subscribe((resp:any)=>{
+      console.log(resp);
+      this.usuario = resp;
+    })
+  }
+
   openBoxFunc() {
     this.openBox = !this.openBox;
     /* eslint no-var: off */
@@ -44,6 +66,8 @@ export class HeaderComponent {
       mainWrapper.classList.remove('open-msg-box');
     }
   }
+
+
 
   public toggleSideBar(): void {
     this.sideBar.switchSideMenuPosition();

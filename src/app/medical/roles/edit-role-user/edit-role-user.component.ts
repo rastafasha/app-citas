@@ -41,7 +41,7 @@ export class EditRoleUserComponent {
 
   showRole(){
     this.roleService.getRole(this.role_id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.name = resp.name;
       this.permissions = resp.permision_pluck;
     })
@@ -74,7 +74,7 @@ export class EditRoleUserComponent {
     this.text_validation = null;
 
     this.roleService.editRole(data, this.role_id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       if(resp.message == 403){
         this.text_validation = resp.message_text;
         return;

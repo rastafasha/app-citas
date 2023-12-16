@@ -71,7 +71,7 @@ export class EditPatientMComponent {
   }
 showUser(){
     this.patientService.getPatient(this.patient_id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.patient_selected = resp.patient;
 
         this.name = this.patient_selected.name;
@@ -211,11 +211,10 @@ showUser(){
     this.text_validation = '';
 
     this.patientService.editPatient(formData, this.patient_id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       if(resp.message == 403){
         this.text_validation = resp.message_text;
       }else{
-
         this.text_success = "El Paciente se ha actualizado";
       }
     })

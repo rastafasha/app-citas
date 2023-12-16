@@ -48,7 +48,7 @@ export class ListPatientMComponent {
     this.serialNumberArray = [];
 
     this.patientService.listPatients(page, this.searchDataValue).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       this.totalDataPatient = resp.total;
       this.patientList = resp.patients.data;
@@ -80,7 +80,7 @@ export class ListPatientMComponent {
 
   deletePatient(){
     this.patientService.deletePatient(this.patient_selected.id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       if(resp.message == 403){
         this.text_validation = resp.message_text;

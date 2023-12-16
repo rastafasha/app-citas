@@ -253,7 +253,7 @@ export class DoctorDashboardComponent {
 
   getDoctors(){
     this.dashboardService.getConfigDashboard().subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.doctors = resp.doctors;
     })
   }
@@ -263,7 +263,7 @@ export class DoctorDashboardComponent {
       doctor_id:this.doctor_id
     }
     this.dashboardService.dashboardDoctor(data).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       this.appointments= resp.appointments.data;
 
@@ -293,7 +293,7 @@ export class DoctorDashboardComponent {
     this.query_n_appointment_year= null;
     this.query_n_appointment_year_before= null;
     this.dashboardService.dashboardDoctorYear(data).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       //start
       this.query_income_year = resp.query_income_year;

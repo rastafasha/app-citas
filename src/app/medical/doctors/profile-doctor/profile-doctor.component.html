@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="about-info">
-                                    <h4>Doctor Profile  <span><a href="javascript:;"><i class="feather icon-more-vertical"></i></a></span></h4>
+                                    <h4>Doctor Profile  </h4>
                                 </div>
                                 <div class="doctor-profile-head">
                                     <!-- <div class="profile-bg-img">
@@ -31,7 +31,12 @@
                                         <div class="col-lg-4 col-md-4">
                                             <div class="profile-user-box">
                                                 <div class="profile-user-img">
-                                                    <img  [src]="doctor_selected.avatar"  [alt]="doctor_selected.name">
+                                                    <div *ngIf="!doctor_selected.avatar">
+                                                        <img src="./assets/img/no-image.jpg" >
+                                                    </div>
+                                                    <div *ngIf="doctor_selected.avatar">
+                                                        <img  [src]="doctor_selected.avatar"  [alt]="doctor_selected.name">
+                                                    </div>
                                                     
                                                 </div>
                                                 <div class="names-profiles">
@@ -59,7 +64,7 @@
                                         <div class="col-lg-4 col-md-4 d-flex align-items-center">
                                             <div class="follow-btn-group">
                                                 <a [routerLink]="['/doctors/list/edit/', doctor_id]" class="btn btn-info follow-btns">Edit</a>
-                                                <button type="submit" class="btn btn-info message-btns">Message</button>
+                                                <!-- <button type="submit" class="btn btn-info message-btns">Message</button> -->
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +148,7 @@
                                         </ul>
                                     </div>
                                     <ng-container *ngIf="option_selected == 1">
-                                        <div class="activity">
+                                        <div class="activity scrooldiv">
                                             <div class="activity-box">
                                                 <ul class="activity-list">
                                                     <ng-container *ngFor="let appointment of appointments">
@@ -272,7 +277,7 @@
                                     <h4 class="card-title ">Appointemt Pendings</h4>
                                 </div>
                                 <div class="card-body p-0 table-dash">
-                                    <div class="table-responsive">
+                                    <div class="table-responsive scrooldiv2">
                                         <table matSort  class="table mb-0 border-0 datatable custom-table patient-profile-table">
                                             <thead>
                                                 <tr>

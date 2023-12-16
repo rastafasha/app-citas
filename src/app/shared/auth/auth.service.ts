@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 // import { BehaviorSubject } from 'rxjs';
 import { routes } from '../routes/routes';
 import { url_servicios } from 'src/app/config/config';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, of } from 'rxjs';
 
 @Injectable({
@@ -60,6 +60,12 @@ export class AuthService {
       this.user = null;
       this.token = null;
     }
+ }
+
+ getUserRomoto(data){
+  let headers = new HttpHeaders({'Authorization': 'Bearer'+this.token})
+  let URL = url_servicios+'/me';
+  return this.http.post(URL,data, {headers:headers});
  }
   
 

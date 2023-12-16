@@ -51,7 +51,7 @@ export class ListRoleUserComponent {
 
     this.rolesService.listRoles().subscribe((resp:any)=>{
       
-      console.log(resp);
+      // console.log(resp);
 
       this.totalData = resp.roles.length;
       this.role_generals = resp.roles;
@@ -84,7 +84,7 @@ export class ListRoleUserComponent {
     
 
     this.rolesService.deleteRole(this.role_selected.id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       if(resp.message == 403){
         this.text_validation = resp.message_text;

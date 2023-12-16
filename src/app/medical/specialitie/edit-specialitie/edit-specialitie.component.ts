@@ -33,7 +33,7 @@ export class EditSpecialitieComponent {
 
   showSpecialitie(){
     this.specialitieService.showSpecialities(this.specialitie_id).subscribe((resp:any) => {
-      console.log(resp);
+      // console.log(resp);
       this.name = resp.name;
       this.state = resp.state;
     })
@@ -52,7 +52,7 @@ export class EditSpecialitieComponent {
     this.valid_form_success = false;
     this.text_validation = null;
     this.specialitieService.editSpecialities(data,this.specialitie_id).subscribe((resp:any) => {
-      console.log(resp);
+      // console.log(resp);
       if(resp.message == 403){
         this.text_validation = resp.message_text;
         return ;

@@ -68,7 +68,7 @@ export class AppointmentCalendarComponent {
       speciality_id: this.speciality_id,
     }
     this.calendarAppointmentService.calendarAppointment(data).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.options = { ...this.options, ...{ events: resp.appointments } };
     })
   }

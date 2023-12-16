@@ -44,7 +44,7 @@ constructor(
 ngOnInit(): void {
   window.scrollTo(0, 0);
   this.activatedRoute.params.subscribe((resp:any)=>{
-    console.log(resp);
+    // console.log(resp);
     this.doctor_id = resp.id;
   });
   this.getDoctor();
@@ -52,7 +52,7 @@ ngOnInit(): void {
 
 getDoctor(){
   this.doctorService.showDoctorProfile(this.doctor_id).subscribe((resp:any)=>{
-    console.log(resp);
+    // console.log(resp);
     this.num_appointment= resp.num_appointment;
     this.money_of_appointments= resp.money_of_appointments;
     this.num_appointment_pendings= resp.num_appointment_pendings;
@@ -100,7 +100,7 @@ getDoctor(){
       data.password = this.password
     }
     this.doctorService.editDoctorProfile(data, this.doctor_id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       
       if(resp.message == 403){
         this.text_validation = resp.message_text;

@@ -68,7 +68,7 @@ export class EditAppointmentsComponent {
   }
   getAppointment(){
     this.appointmentService.showAppointment(this.appointment_id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.appointment_selected = resp.appointment;
 
       this.name = this.appointment_selected.patient.name;
@@ -95,7 +95,7 @@ export class EditAppointmentsComponent {
       speciality_id:this.speciality_id
     }
     this.appointmentService.lisFiter(data).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.DOCTORS = resp.doctors;
 
       this.DOCTORS.forEach((doctor:any) => {
@@ -139,7 +139,7 @@ export class EditAppointmentsComponent {
 
   filterPatient(){
     this.appointmentService.getPatient(this.n_doc+"").subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       if(resp.menssage === 403){
         this.name= '';
         this.surname= '';
@@ -194,7 +194,7 @@ export class EditAppointmentsComponent {
     }
 
     this.appointmentService.editAppointment(data, this.appointment_id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       if(resp.message == 403){
         this.text_validation = resp.message_text;
       }else{

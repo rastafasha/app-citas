@@ -29,8 +29,9 @@ export class AddStaffNComponent {
   public IMAGE_PREVISUALIZA:any = 'assets/img/user-06.jpg';
 
   valid_form:boolean = false;
-  valid_form_success:boolean = false;
-  text_validation:any = null;
+  public text_success:string = '';
+  public text_validation:string = '';
+  
 
   constructor(
     public staffService:StaffService,
@@ -46,7 +47,7 @@ export class AddStaffNComponent {
 
   getRoles(){
     this.staffService.listConfig().subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.roles = resp.roles;
     })
   }
@@ -92,11 +93,11 @@ export class AddStaffNComponent {
     formData.append('role_id', this.selectedValue);
     formData.append('imagen', this.FILE_AVATAR);
 
-    this.valid_form_success = false;
+    this.text_success = '';
     this.text_validation = null;
 
     this.staffService.createUser(formData).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       if(resp.message == 403){
         this.text_validation = resp.message_text;
       }else{
@@ -111,7 +112,7 @@ export class AddStaffNComponent {
         this.designation = '';
         this.address = '';
         this.selectedValue = '';
-        this.valid_form_success = true;
+        // this.text_success = 'El Usuario se ha editado correctamente';
         this.router.navigate(['/staffs/list']);
       }
     })

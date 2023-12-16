@@ -267,7 +267,7 @@ export class AdminDashboardComponent {
 
   getDashboardAdmin(){
     this.dashboardService.dashboardAdmin({}).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       this.appointments = resp.appointments.data;
 
@@ -295,7 +295,7 @@ export class AdminDashboardComponent {
     }
     this.query_income_year = null;
     this.dashboardService.dashboardAdminYear(data).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       //start
       this.query_patient_by_genders = resp.query_patients_by_gender;
       

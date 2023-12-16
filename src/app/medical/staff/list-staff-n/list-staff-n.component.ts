@@ -49,7 +49,7 @@ export class ListStaffNComponent {
 
     this.staffService.listUsers().subscribe((resp:any)=>{
       
-      console.log(resp);
+      // console.log(resp);
 
       this.totalDataStaff = resp.users.data.length;
       this.staff_generals = resp.users.data;
@@ -82,7 +82,7 @@ export class ListStaffNComponent {
     
 
     this.staffService.deleteUser(this.staff_selected.id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       if(resp.message == 403){
         this.text_validation = resp.message_text;

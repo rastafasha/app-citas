@@ -52,7 +52,7 @@ export class AtencionMedicaComponent {
 
   getAppointment(){
     this.appointmentService.showAppointment(this.appointment_id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.appointment_selected = resp.appointment;
 
       this.name = this.appointment_selected.patient.name;
@@ -66,7 +66,7 @@ export class AtencionMedicaComponent {
     // cita medica
 
     this.appointmentService.showCitamedica(this.appointment_id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       this.appointment_atention_selected = resp.appointment_attention;
       this.medical =this.appointment_atention_selected.receta_medica;
@@ -106,7 +106,7 @@ export class AtencionMedicaComponent {
     }
 
     this.appointmentService.registerAttention(data).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.text_success = 'Se guardó la informacion de la cita médica'
     })
 

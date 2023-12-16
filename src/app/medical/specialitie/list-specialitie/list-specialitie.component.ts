@@ -42,7 +42,7 @@ export class ListSpecialitieComponent {
 
     this.specialitiesService.listSpecialities().subscribe((resp:any) => {
 
-      console.log(resp);
+      // console.log(resp);
 
       this.totalData = resp.specialities.length;
       this.specialitie_generals = resp.specialities;
@@ -75,7 +75,7 @@ export class ListSpecialitieComponent {
   deleteSpecialitie(){
 
     this.specialitiesService.deleteSpecialities(this.specialitie_selected.id).subscribe((resp:any) => {
-      console.log(resp);
+      // console.log(resp);
       let INDEX = this.specialitiesList.findIndex((item:any) => item.id == this.specialitie_selected.id);
       if(INDEX != -1){
         this.specialitiesList.splice(INDEX,1);

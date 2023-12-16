@@ -22,6 +22,7 @@ export class AddAppointmentsComponent {
   speciality_id:any;
   date_appointment:any;
   
+  id:number = 0;
   name:string = '';
   surname:string = '';
   n_doc:number = 0;
@@ -33,6 +34,7 @@ export class AddAppointmentsComponent {
   amount_add:number = 0;
   method_payment:string = '';
 
+  patient:any = [];
   DOCTORS:any = [];
   DOCTOR:any = [];
   DOCTOR_SELECTED:any;
@@ -63,7 +65,7 @@ export class AddAppointmentsComponent {
       speciality_id:this.speciality_id
     }
     this.appointmentService.lisFiter(data).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.DOCTORS = resp.doctors;
     })
   }
@@ -84,7 +86,8 @@ export class AddAppointmentsComponent {
 
   filterPatient(){
     this.appointmentService.getPatient(this.n_doc+"").subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
+      this.patient = resp;
       if(resp.menssage === 403){
         this.name= '';
         this.surname= '';
@@ -124,6 +127,7 @@ export class AddAppointmentsComponent {
     let data ={
       "doctor_id": this.DOCTOR_SELECTED.doctor.id,
         // "patient_id": ,
+        user_id:this.patient.id,
         name: this.name,
         surname: this.surname,
         n_doc: this.n_doc,
@@ -139,8 +143,9 @@ export class AddAppointmentsComponent {
     }
 
     this.appointmentService.storeAppointment(data).subscribe((resp:any)=>{
-      console.log(resp);
-      this.text_success = "La Cita medica se ha creado";
+      // console.log(resp);
+      // this.text_success = "La Cita medica se ha creado";
+      this.router.navigate(['/appointments/list']);
     })
   }
 

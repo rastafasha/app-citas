@@ -78,7 +78,7 @@ export class AddDoctorComponent {
 
   getConfig(){
     this.doctorService.listConfig().subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.roles = resp.roles;
       this.specialities = resp.specialities;
       this.hours_days = resp.hours_days;
@@ -143,12 +143,12 @@ export class AddDoctorComponent {
     formData.append("schedule_hours",JSON.stringify(HOUR_SCHEDULES));
 
     this.doctorService.storeDoctor(formData).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       
       if(resp.message == 403){
         this.text_validation = resp.message_text;
       }else{
-        this.text_success = 'El usuario ha sido registrado correctamente';
+        // this.text_success = 'El usuario ha sido registrado correctamente';
 
 
         // this.name = '';
@@ -162,7 +162,7 @@ export class AddDoctorComponent {
         // this.address = '';
         // this.selectedValue = '';
         // this.valid_form_success = true;
-        // this.router.navigate(['/staffs/list']);
+        this.router.navigate(['/doctors/list']);
       }
     })
 
