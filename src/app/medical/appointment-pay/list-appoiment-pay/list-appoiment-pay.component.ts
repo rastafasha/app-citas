@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { routes } from 'src/app/shared/routes/routes';
 import { AppoitmentPayService } from '../service/appoitment-pay.service';
+import { FileSaverService } from 'ngx-filesaver';
+import * as XLSX from 'xlsx';
+import jspdf from 'jspdf';
 
 declare var $:any;
 
@@ -11,6 +14,8 @@ declare var $:any;
   styleUrls: ['./list-appoiment-pay.component.scss']
 })
 export class ListAppoimentPayComponent {
+
+  @ViewChild('closebutton') closebutton:any;
 
   public routes = routes;
   public selectedValue !: string  ;
@@ -53,7 +58,8 @@ export class ListAppoimentPayComponent {
   public text_validation:string = '';
 
   constructor(
-    public appointmentpayService : AppoitmentPayService
+    public appointmentpayService : AppoitmentPayService,
+    private fileSaver: FileSaverService
     ){
 
   }
@@ -118,7 +124,8 @@ export class ListAppoimentPayComponent {
         $(".modal-backdrop").remove();
         $("body").removeClass();
         $("body").removeAttr("style");
-        this.ngOnInit();
+        this.closebutton.nativeElement.click();
+        this.getTableData();
       }
     })
   }
@@ -176,9 +183,13 @@ export class ListAppoimentPayComponent {
         $(".modal-backdrop").remove();
         $("body").removeClass();
         $("body").removeAttr("style");
-        this.ngOnInit();
+        this.getTableData();
       }
     })
+  }
+
+  closeReload(){
+    this.getTableData();
   }
 
   deletePayment(data:any){
@@ -296,5 +307,99 @@ export class ListAppoimentPayComponent {
       this.pageSelection.push({ skip: skip, limit: limit });
     }
   }
+
+  excelExport(){
+    const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8';
+    const EXCLE_EXTENSION = '.xlsx';
+
+    this.getTableData();
+
+
+    //custom code
+    const worksheet = XLSX.utils.json_to_sheet(this.appointmentList);
+
+    const workbook = {
+      Sheets:{
+        'testingSheet': worksheet
+      },
+      SheetNames:['testingSheet']
+    }
+
+    const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type: 'array'});
+
+    const blobData = new Blob([excelBuffer],{type: EXCEL_TYPE});
+
+    this.fileSaver.save(blobData, "appointments_pays_db_appcitasmedicas",EXCLE_EXTENSION)
+
+  }
+  csvExport(){
+    const CSV_TYPE = 'text/csv';
+    const CSV_EXTENSION = '.csv';
+
+    this.getTableData();
+
+    //custom code
+    const worksheet = XLSX.utils.json_to_sheet(this.appointmentList);
+
+    const workbook = {
+      Sheets:{
+        'testingSheet': worksheet
+      },
+      SheetNames:['testingSheet']
+    }
+
+    const excelBuffer = XLSX.write(workbook, {bookType:'csv', type: 'array'});
+
+    const blobData = new Blob([excelBuffer],{type: CSV_TYPE});
+
+    this.fileSaver.save(blobData, "appointments_pays_db_appcitasmedicas", CSV_EXTENSION)
+
+  }
+
+  txtExport(){
+    const TXT_TYPE = 'text/txt';
+    const TXT_EXTENSION = '.txt';
+
+    this.getTableData();
+
+
+    //custom code
+    const worksheet = XLSX.utils.json_to_sheet(this.appointmentList);
+
+    const workbook = {
+      Sheets:{
+        'testingSheet': worksheet
+      },
+      SheetNames:['testingSheet']
+    }
+
+    const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type: 'array'});
+
+    const blobData = new Blob([excelBuffer],{type: TXT_TYPE});
+
+    this.fileSaver.save(blobData, "appointments_pays_db_appcitasmedicas", TXT_EXTENSION)
+
+  }
+
+  pdfExport(){
+    // var doc = new jspdf(); 
+    
+    // const worksheet = XLSX.utils.json_to_sheet(this.appointmentList);
+
+    // const workbook = {
+    //   Sheets:{
+    //     'testingSheet': worksheet
+    //   },
+    //   SheetNames:['testingSheet']
+    // }
+
+    // doc.html(document.body, {
+    //   callback: function (doc) {
+    //     doc.save('appointments_pays_db_appcitasmedicas.pdf');
+    //   }
+    // });
+
+  }
+
 
 }

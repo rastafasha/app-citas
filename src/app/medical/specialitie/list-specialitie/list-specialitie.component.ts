@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { SpecialitieService } from '../service/specialitie.service';
 import { MatTableDataSource } from '@angular/material/table';
+import * as XLSX from 'xlsx';
+import jspdf from 'jspdf';
+import { FileSaverService } from 'ngx-filesaver';
 declare var $:any;    
 @Component({
   selector: 'app-list-specialitie',
@@ -29,6 +32,7 @@ export class ListSpecialitieComponent {
   public specialitie_selected:any;
   constructor(
     public specialitiesService: SpecialitieService,
+    private fileSaver: FileSaverService
   ){
 
   }
@@ -167,4 +171,100 @@ export class ListSpecialitieComponent {
       // 10 - 20
     }
   }
+
+
+
+  excelExport(){
+    const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8';
+    const EXCLE_EXTENSION = '.xlsx';
+
+    this.getTableDataGeneral();
+
+
+    //custom code
+    const worksheet = XLSX.utils.json_to_sheet(this.specialitie_generals);
+
+    const workbook = {
+      Sheets:{
+        'testingSheet': worksheet
+      },
+      SheetNames:['testingSheet']
+    }
+
+    const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type: 'array'});
+
+    const blobData = new Blob([excelBuffer],{type: EXCEL_TYPE});
+
+    this.fileSaver.save(blobData, "specialities_db_appcitasmedicas",EXCLE_EXTENSION)
+
+  }
+  csvExport(){
+    const CSV_TYPE = 'text/csv';
+    const CSV_EXTENSION = '.csv';
+
+    this.getTableDataGeneral();
+
+    //custom code
+    const worksheet = XLSX.utils.json_to_sheet(this.specialitie_generals);
+
+    const workbook = {
+      Sheets:{
+        'testingSheet': worksheet
+      },
+      SheetNames:['testingSheet']
+    }
+
+    const excelBuffer = XLSX.write(workbook, {bookType:'csv', type: 'array'});
+
+    const blobData = new Blob([excelBuffer],{type: CSV_TYPE});
+
+    this.fileSaver.save(blobData, "specialities_db_appcitasmedicas", CSV_EXTENSION)
+
+  }
+
+  txtExport(){
+    const TXT_TYPE = 'text/txt';
+    const TXT_EXTENSION = '.txt';
+
+    this.getTableDataGeneral();
+
+
+    //custom code
+    const worksheet = XLSX.utils.json_to_sheet(this.specialitie_generals);
+
+    const workbook = {
+      Sheets:{
+        'testingSheet': worksheet
+      },
+      SheetNames:['testingSheet']
+    }
+
+    const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type: 'array'});
+
+    const blobData = new Blob([excelBuffer],{type: TXT_TYPE});
+
+    this.fileSaver.save(blobData, "specialities_db_appcitasmedicas", TXT_EXTENSION)
+
+  }
+
+  pdfExport(){
+    // var doc = new jspdf(); 
+    
+    // const worksheet = XLSX.utils.json_to_sheet(this.specialitie_generals);
+
+    // const workbook = {
+    //   Sheets:{
+    //     'testingSheet': worksheet
+    //   },
+    //   SheetNames:['testingSheet']
+    // }
+
+    // doc.html(document.body, {
+    //   callback: function (doc) {
+    //     doc.save('specialities_db_appcitasmedicas.pdf');
+    //   }
+    // });
+
+  }
+
 }

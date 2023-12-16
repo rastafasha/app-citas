@@ -95,11 +95,13 @@
                     <span>{{user.roles}}</span>
                 </div>
                 <span class="user-img">
-                    <div *ngIf="!usuario.avatar">
-                        <img  src="assets/img/user-06.jpg" >
-                    </div>
-                    <div *ngIf="usuario.avatar">
-                        <img  src="{{imagenSerUrl}}/{{usuario.avatar}}">
+                    <div *ngIf="usuario">
+                        <div *ngIf="!usuario.avatar">
+                            <img  src="assets/img/user-06.jpg" >
+                        </div>
+                        <div *ngIf="usuario.avatar">
+                            <img  src="{{imagenSerUrl}}/{{usuario.avatar}}">
+                        </div>
                     </div>
                 </span>
             </a>
@@ -329,8 +331,8 @@
                 </li>
             </ul>
         </div>
-        <div class="topnav-dropdown-footer">
+        <!-- <div class="topnav-dropdown-footer">
             <a [routerLink]="routes.chat">See all messages</a>
-        </div>
+        </div> -->
     </div>
 </div>

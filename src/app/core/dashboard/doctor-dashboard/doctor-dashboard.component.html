@@ -37,8 +37,18 @@
                 </div>
             </div>
         </div>
-        
-        <div class="doctor-list-blk">
+        <div class="container" *ngIf="!doctor_id">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chart-title patient-visit" style="display: flex; align-items: center; justify-content: center;">
+                        <h4>Favor Seleccione un Especialista</h4>
+                        
+                    </div>	
+                </div>
+            </div>
+        </div>
+
+        <div class="doctor-list-blk" *ngIf="doctor_id">
             <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="doctor-widget border-right-bg">
@@ -103,18 +113,18 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="doctor_id">
             <div class="col-12 col-md-12 col-lg-12 col-xl-7">
                 <div class="card">
                     <div class="card-body">
                         <div class="chart-title patient-visit mb-0">
                             <h4>Income</h4>
-                            <div class="income-value" >
+                            <!-- <div class="income-value" >
                                 <h3><span>$</span> 20,560</h3>
                                 <p><span class="passive-view"><i class="feather icon-arrow-up-right me-1"></i>40%</span> vs last month</p>
-                            </div>
+                            </div> -->
                             <div class="form-group mb-0">
-                                 <mat-select [(ngModel)]="selectedValue" class="form-control select"  placeholder="2022">
+                                 <mat-select [(ngModel)]="selectedValue" class="form-control select" (selectionChange)="selectedYear()"  placeholder="2022">
                                         <mat-option *ngFor="let data of selecedList" [value]="data.value">
                                           {{data.value}}
                                         </mat-option>
@@ -137,7 +147,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-12 col-lg-6 col-xl-3 d-flex">
+            <div class="col-12 col-md-12 col-lg-6 col-xl-5 d-flex">
                 <div class="card">
                     <div class="card-body">
                             <apx-chart class="donut-chart-radial"
@@ -151,7 +161,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-12 col-lg-6 col-xl-2 d-flex">
+            <!-- <div class="col-12 col-md-12 col-lg-6 col-xl-2 d-flex">
                 <div class="struct-point">
                     <div class="card patient-structure">
                         <div class="card-body">
@@ -166,27 +176,27 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
-        <div class="row">
+        <div class="row" *ngIf="doctor_id">
             <div class="col-12 col-md-12  col-xl-7">
                 <div class="card">
                     <div class="card-body">
                         <div class="chart-title patient-visit">
-                            <h4>Activity Chart</h4>
+                            <h4>Appointments </h4>
                             <div >
                                 <ul class="nav chat-user-total">
                                     <li><i class="fa fa-circle low-users" aria-hidden="true"></i>Low</li>
                                     <li><i class="fa fa-circle current-users" aria-hidden="true"></i> High</li>
                                 </ul>
                             </div>
-                            <div class="form-group mb-0">
+                            <!-- <div class="form-group mb-0">
                                 <mat-select [(ngModel)]="selectedValue" class="form-control select"  placeholder="This Week">
                                     <mat-option *ngFor="let data of selecedLists" [value]="data.value">
                                       {{data.value}}
                                     </mat-option>
                                 </mat-select>
-                            </div>
+                            </div> -->
                         </div>	
                         <div id="activity-chart" *ngIf="query_n_appointment_year && query_n_appointment_year_before"> 
                             <apx-chart

@@ -412,6 +412,43 @@ export class DataService {
           ],
         },
         {
+          menuValue: 'Pagos',
+          hasSubRoute: true,
+          showSubRoute: false,
+          base: 'payroll',
+          img: 'assets/img/icons/menu-icon-09.svg',
+          subMenus: [
+            {
+              menuValue: 'Ver Pagos',
+              route: routes.salary,
+              base: routes.salary,
+              permision: 'show_payment',
+              show_nav: true,
+            },
+            {
+              menuValue: 'Edit Pagos',
+              route: '',
+              base: '',
+              permision: 'edit_payment',
+              show_nav: false,
+            },
+            {
+              menuValue: 'Add Pagos',
+              route: '',
+              base: '',
+              permision: 'add_payment',
+              show_nav: false,
+            },
+            {
+              menuValue: 'Delete Pagos',
+              route: '',
+              base: '',
+              permision: 'delete_payment',
+              show_nav: false,
+            },
+          ],
+        },
+        {
           menuValue: 'Especialidades',
           hasSubRoute: true,
           showSubRoute: false,
@@ -449,43 +486,7 @@ export class DataService {
             },
           ],
         },
-        {
-          menuValue: 'Pagos',
-          hasSubRoute: true,
-          showSubRoute: false,
-          base: 'payroll',
-          img: 'assets/img/icons/menu-icon-09.svg',
-          subMenus: [
-            {
-              menuValue: 'Ver Pagos',
-              route: routes.salary,
-              base: routes.salary,
-              permision: 'show_payment',
-              show_nav: true,
-            },
-            {
-              menuValue: 'Edit Pagos',
-              route: '',
-              base: '',
-              permision: 'edit_payment',
-              show_nav: false,
-            },
-            {
-              menuValue: 'Add Pagos',
-              route: '',
-              base: '',
-              permision: 'add_payment',
-              show_nav: false,
-            },
-            {
-              menuValue: 'Delete Pagos',
-              route: '',
-              base: '',
-              permision: 'delete_payment',
-              show_nav: false,
-            },
-          ],
-        },
+        
         {
           menuValue: 'Calendario',
           route: routes.calendar,

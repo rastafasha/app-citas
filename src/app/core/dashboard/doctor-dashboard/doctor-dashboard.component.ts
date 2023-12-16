@@ -445,13 +445,22 @@ export class DoctorDashboardComponent {
   }
 
   selectDoctor(){
+     
     this.dashboardDoctor();
     this.dashboardDoctorYear();
   }
 
+  selectedYear(){
+    this.dashboardDoctorYear();
+  }
+
   selecedList: data[] = [
-    {value: '2023'},
     {value: '2022'},
+    {value: '2023'},
+    {value: '2024'},
+    {value: '2025'},
+    {value: '2026'},
+    
   ];
   selecedLists: data[] = [
     {value: 'This Week'},

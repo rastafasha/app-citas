@@ -37,7 +37,7 @@ export class HeaderComponent {
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');
     // this.user = this.authService.user;
-    console.log(this.user);
+    // console.log(this.user);
   }
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class HeaderComponent {
   
   getDoctor(){
     this.authService.getUserRomoto(this.user_id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.usuario = resp;
     })
   }
@@ -67,11 +67,29 @@ export class HeaderComponent {
     }
   }
 
+  
 
 
   public toggleSideBar(): void {
     this.sideBar.switchSideMenuPosition();
+    this.addClass = !this.addClass;
+      /* eslint no-var: off */
+      var root = document.getElementsByTagName( 'html' )[0];
+      /* eslint no-var: off */
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      var sidebar:any = document.getElementById('sidebar')
+  
+      if (this.addClass) {
+        root.classList.add('menu-opened');
+        sidebar.classList.add('opened');
+      }
+      else {
+        root.classList.remove('menu-opened');
+        sidebar.classList.remove('opened');
+      }
+      console.log('pulsado');
   }
+
   public toggleMobileSideBar(): void {
     this.sideBar.switchMobileSideBarPosition();
     

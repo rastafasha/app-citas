@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   public passwordClass = false;
  public ERROR = false;
  public user:any;
+ public roles:any;
+
   form = new FormGroup({
     email: new FormControl('superadmin@superadmin.com', [
       Validators.required,
@@ -31,7 +33,9 @@ export class LoginComponent implements OnInit {
     public router:Router
     ) {
       let USER = localStorage.getItem("user");
-    this.user = JSON.parse(USER ? USER: '');
+      if(localStorage.getItem("user")){
+        this.user = JSON.parse(USER ? USER: '');
+      }
     }
 
   ngOnInit(): void {
@@ -51,13 +55,15 @@ export class LoginComponent implements OnInit {
           // console.log(resp);
           if(resp){
             //login exitoso
-            if(this.user.roles == 'DOCTOR'){
-              this.router.navigate([routes.doctorDashboard]);
+            setTimeout(()=>{
+              if(this.user.roles == 'DOCTOR'){
+                this.router.navigate([routes.doctorDashboard]);
+  
+              }else{
+                this.router.navigate([routes.adminDashboard]);
+              }
 
-            }else{
-              this.router.navigate([routes.adminDashboard]);
-
-            }
+            },100)
 
           }else{
             //login fallido

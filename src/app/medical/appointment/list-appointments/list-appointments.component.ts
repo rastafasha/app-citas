@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { routes } from 'src/app/shared/routes/routes';
 import { AppointmentService } from '../service/appointment.service';
+import { FileSaverService } from 'ngx-filesaver';
+import * as XLSX from 'xlsx';
+import jspdf from 'jspdf';
+
 declare var $:any;
 @Component({
   selector: 'app-list-appointments',
@@ -38,7 +42,8 @@ export class ListAppointmentsComponent {
   hours:any;
 
   constructor(
-    public appointmentService: AppointmentService
+    public appointmentService: AppointmentService,
+    private fileSaver: FileSaverService
     ){
 
   }
@@ -193,4 +198,98 @@ export class ListAppointmentsComponent {
       this.pageSelection.push({ skip: skip, limit: limit });
     }
   }
+
+  excelExport(){
+    const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8';
+    const EXCLE_EXTENSION = '.xlsx';
+
+    this.getTableDataGeneral();
+
+
+    //custom code
+    const worksheet = XLSX.utils.json_to_sheet(this.appointmentList);
+
+    const workbook = {
+      Sheets:{
+        'testingSheet': worksheet
+      },
+      SheetNames:['testingSheet']
+    }
+
+    const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type: 'array'});
+
+    const blobData = new Blob([excelBuffer],{type: EXCEL_TYPE});
+
+    this.fileSaver.save(blobData, "appointments_db_appcitasmedicas",EXCLE_EXTENSION)
+
+  }
+  csvExport(){
+    const CSV_TYPE = 'text/csv';
+    const CSV_EXTENSION = '.csv';
+
+    this.getTableDataGeneral();
+
+    //custom code
+    const worksheet = XLSX.utils.json_to_sheet(this.appointmentList);
+
+    const workbook = {
+      Sheets:{
+        'testingSheet': worksheet
+      },
+      SheetNames:['testingSheet']
+    }
+
+    const excelBuffer = XLSX.write(workbook, {bookType:'csv', type: 'array'});
+
+    const blobData = new Blob([excelBuffer],{type: CSV_TYPE});
+
+    this.fileSaver.save(blobData, "staffs_db_appcitasmedicas", CSV_EXTENSION)
+
+  }
+
+  txtExport(){
+    const TXT_TYPE = 'text/txt';
+    const TXT_EXTENSION = '.txt';
+
+    this.getTableDataGeneral();
+
+
+    //custom code
+    const worksheet = XLSX.utils.json_to_sheet(this.appointmentList);
+
+    const workbook = {
+      Sheets:{
+        'testingSheet': worksheet
+      },
+      SheetNames:['testingSheet']
+    }
+
+    const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type: 'array'});
+
+    const blobData = new Blob([excelBuffer],{type: TXT_TYPE});
+
+    this.fileSaver.save(blobData, "staffs_db_appcitasmedicas", TXT_EXTENSION)
+
+  }
+
+  pdfExport(){
+    // var doc = new jspdf(); 
+    
+    // const worksheet = XLSX.utils.json_to_sheet(this.staff_generals);
+
+    // const workbook = {
+    //   Sheets:{
+    //     'testingSheet': worksheet
+    //   },
+    //   SheetNames:['testingSheet']
+    // }
+
+    // doc.html(document.body, {
+    //   callback: function (doc) {
+    //     doc.save('staffs_db_appcitasmedicas.pdf');
+    //   }
+    // });
+
+  }
+
 }

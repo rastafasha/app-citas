@@ -421,7 +421,7 @@ export class AdminDashboardComponent {
   }
 
   selectedYear(){
-    console.log(this.selectedValue);
+    // console.log(this.selectedValue);
     this.getDashboardAdminYear();
   }
   selecedList: data[] = [
@@ -430,7 +430,6 @@ export class AdminDashboardComponent {
     {value: '2024'},
     {value: '2025'},
     {value: '2026'},
-    
-    
   ];
+  
 }

@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FileSaverModule } from 'ngx-filesaver';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    FileSaverModule
   ]
 })
 export class StaffModule { }
