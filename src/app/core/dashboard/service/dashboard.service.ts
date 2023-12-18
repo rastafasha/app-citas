@@ -40,5 +40,15 @@ export class DashboardService {
     let URL = url_servicios+'/dashboard/doctor-year';
     return this.http.post(URL,data, {headers:headers});
   }
+  dashboardPatient(data){
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
+    let URL = url_servicios+'/dashboard/patient';
+    return this.http.post(URL,data, {headers:headers});
+  }
+  dashboardPatientYear(data){
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
+    let URL = url_servicios+'/dashboard/patient-year';
+    return this.http.post(URL,data, {headers:headers});
+  }
   
 }

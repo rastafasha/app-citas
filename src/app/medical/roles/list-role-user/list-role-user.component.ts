@@ -206,7 +206,7 @@ export class ListRoleUserComponent {
 
     const blobData = new Blob([excelBuffer],{type: EXCEL_TYPE});
 
-    this.fileSaver.save(blobData, "roles_db_appcitasmedicas",EXCLE_EXTENSION)
+    this.fileSaver.save(blobData, "roles_db_appcitasmedicas",)
 
   }
   csvExport(){
@@ -229,7 +229,7 @@ export class ListRoleUserComponent {
 
     const blobData = new Blob([excelBuffer],{type: CSV_TYPE});
 
-    this.fileSaver.save(blobData, "roles_db_appcitasmedicas", CSV_EXTENSION)
+    this.fileSaver.save(blobData, "roles_db_appcitasmedicas", )
 
   }
 

@@ -220,7 +220,7 @@ export class ListAppointmentsComponent {
 
     const blobData = new Blob([excelBuffer],{type: EXCEL_TYPE});
 
-    this.fileSaver.save(blobData, "appointments_db_appcitasmedicas",EXCLE_EXTENSION)
+    this.fileSaver.save(blobData, "appointments_db_appcitasmedicas",)
 
   }
   csvExport(){

@@ -38,7 +38,7 @@
         </ng-container>
       </ul>
       <div class="logout-btn">
-        <a [routerLink]="routes.login"><span class="menu-side"><img src="assets/img/icons/logout.svg" alt="" /></span>
+        <a (click)="logout()" style="cursor:pointer"><span class="menu-side"><img src="assets/img/icons/logout.svg" alt="" /></span>
           <span>Logout</span></a>
       </div>
     </div>

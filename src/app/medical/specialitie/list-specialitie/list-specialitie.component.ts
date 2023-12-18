@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
 import { FileSaverService } from 'ngx-filesaver';
+import { routes } from 'src/app/shared/routes/routes';
 declare var $:any;    
 @Component({
   selector: 'app-list-specialitie',
@@ -11,6 +12,7 @@ declare var $:any;
   styleUrls: ['./list-specialitie.component.scss']
 })
 export class ListSpecialitieComponent {
+  public routes = routes;
   public specialitiesList:any = [];
   dataSource!: MatTableDataSource<any>;
 
@@ -243,7 +245,7 @@ export class ListSpecialitieComponent {
 
     const blobData = new Blob([excelBuffer],{type: TXT_TYPE});
 
-    this.fileSaver.save(blobData, "specialities_db_appcitasmedicas", TXT_EXTENSION)
+    this.fileSaver.save(blobData, "specialities_db_appcitasmedicas", )
 
   }
 

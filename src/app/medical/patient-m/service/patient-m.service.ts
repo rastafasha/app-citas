@@ -45,4 +45,5 @@ export class PatientMService {
     let URL = url_servicios+"/patients/profile/"+user_id;
     return this.http.get(URL,{headers:headers});
   }
+  
 }

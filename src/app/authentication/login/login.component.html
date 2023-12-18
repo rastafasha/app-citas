@@ -80,18 +80,18 @@
                       class="profile-views toggle-password"
                     ></span>
                   </div>
-                  <!-- <div class="forgotpass">
+                  <div class="forgotpass">
                     <div class="remember-me">
                       <label
                         class="custom_check mr-2 mb-0 d-inline-flex remember-me"
                       >
                         Remember me
-                        <input type="checkbox" name="radio" />
+                        <input type="checkbox" formControlName="remember" name="radio" />
                         <span class="checkmark"></span>
                       </label>
                     </div>
-                    <a [routerLink]="routes.forgotPassword">Forgot Password?</a>
-                  </div> -->
+                    <!-- <a [routerLink]="routes.forgotPassword">Forgot Password?</a> -->
+                  </div>
 
                   <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="ERROR">
                     <strong>Error!</strong>  Usuario y/o contraseña incorrecto.

@@ -21,6 +21,8 @@ import { DataService } from 'src/app/shared/data/data.service';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { pageSelection, apiResultFormat, patientDashboard } from 'src/app/shared/models/models';
+import { DashboardService } from '../service/dashboard.service';
+import { ActivatedRoute } from '@angular/router';
 interface data {
   value: string ;
 }
@@ -79,6 +81,8 @@ export class PatientDashboardComponent implements OnInit {
   slideConfig = { slidesToShow: 3, slidesToScroll: 3, centerMode: true, centerPadding: '30px'
 };
 
+
+
  
   public patientDashboard: Array<patientDashboard> = [];
   dataSource!: MatTableDataSource<patientDashboard>;
@@ -97,7 +101,46 @@ export class PatientDashboardComponent implements OnInit {
   public pageSelection: Array<pageSelection> = [];
   public totalPages = 0;
 
-  constructor(private data: DataService) {
+
+
+  public patientProfile: any[];
+  option_selected:number = 1;
+  public patient_id: any;
+
+  public doctors:any = [];
+  public doctor_id:any;
+
+
+  public appointments:any = []
+  public num_appointments_current:number = 0;
+  public num_appointments_before:number = 0;
+  public porcentaje_d:number = 0;
+  public num_appointments_attention_current:number = 0;
+  public num_appointments_attention_before:number = 0;
+  public porcentaje_da:number = 0;
+  public num_appointments_total_pay_current:number = 0;
+  public num_appointments_total_pay_before:number = 0;
+  public porcentaje_dtp:number = 0;
+  public num_appointments_total_pending_current:number = 0;
+  public num_appointments_total_pending_before:number = 0;
+  public porcentaje_dtpn:number = 0;
+
+  public query_income_year:any = [];
+  public query_patient_by_genders:any = [];
+  public query_n_appointment_year:any = [];
+  public query_n_appointment_year_before:any = [];
+
+  public user:any;
+
+
+  public text_success:string = '';
+  public text_validation:string = '';
+
+  constructor(
+    private data: DataService,
+    public dashboardService:DashboardService,
+    public activatedRoute: ActivatedRoute,
+    ) {
     this.carousel1 = this.data.carousel1;
     this.carousel2 = this.data.carousel2;
 
@@ -352,6 +395,24 @@ export class PatientDashboardComponent implements OnInit {
   
   ngOnInit() {
     this.getTableData();
+    let USER = localStorage.getItem("user");
+    this.user = JSON.parse(USER ? USER: '');
+
+    window.scrollTo(0, 0);
+    this.activatedRoute.params.subscribe((resp:any)=>{
+      // console.log(resp);
+      this.patient_id = resp.id;
+    });
+    this.getDoctor();
+  }
+
+  getDoctor(){
+    this.dashboardService.dashboardPatient(this.patient_id)
+    .subscribe((resp:any)=>{
+      console.log(resp);
+  
+  
+    })
   }
   private getTableData(): void {
     this.patientDashboard = [];
