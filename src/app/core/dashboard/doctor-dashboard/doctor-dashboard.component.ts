@@ -18,6 +18,7 @@ import {
   ApexTooltip,
 } from 'ng-apexcharts';
 import { DashboardService } from '../service/dashboard.service';
+import { DoctorService } from 'src/app/medical/doctors/service/doctor.service';
 interface data {
   value: string ;
 }
@@ -94,7 +95,8 @@ export class DoctorDashboardComponent {
   public user:any;
 
   constructor(
-    public dashboardService:DashboardService
+    public dashboardService:DashboardService,
+    public doctorService:DoctorService,
   ) {
     this.chartOptionsOne = {
       chart: {
@@ -246,6 +248,8 @@ export class DoctorDashboardComponent {
   }
 
   ngOnInit(): void {
+    this.doctorService.closeMenuSidebar();
+    window.scrollTo(0, 0);
     this.getDoctors();
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');

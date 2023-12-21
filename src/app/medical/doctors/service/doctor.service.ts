@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { url_servicios } from 'src/app/config/config';
 import { AuthService } from 'src/app/shared/auth/auth.service';
+declare var $:any;
 
 @Injectable({
   providedIn: 'root'
@@ -59,5 +60,10 @@ export class DoctorService {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
     let URL = url_servicios+"/doctors/destroy/"+doctor_id;
     return this.http.delete(URL, {headers:headers});
+  }
+
+  closeMenuSidebar(){
+    $('.sidebar').addClass("cerrar");
+    $('.menu-opened').remove("menu-opened");
   }
 }

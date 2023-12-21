@@ -5,6 +5,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { CalendarAppointmentService } from '../sevice/calendar-appointment.service';
 import { AppoitmentPayService } from '../../appointment-pay/service/appoitment-pay.service';
+import { DoctorService } from '../../doctors/service/doctor.service';
 
 @Component({
   selector: 'app-appointment-calendar',
@@ -24,7 +25,9 @@ export class AppointmentCalendarComponent {
 
   constructor(
     public calendarAppointmentService: CalendarAppointmentService,
-    public appointmentpayService : AppoitmentPayService
+    public appointmentpayService : AppoitmentPayService,
+    public doctorService : DoctorService,
+    
     ) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     // this.data.getEvents().subscribe((events: any) => {
@@ -52,6 +55,7 @@ export class AppointmentCalendarComponent {
 
   ngOnInit() {
     window.scrollTo(0, 0);
+    this.doctorService.closeMenuSidebar();
     this.getSpecialities();
     this.getCalendar();
   }

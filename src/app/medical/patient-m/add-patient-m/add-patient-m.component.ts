@@ -3,6 +3,7 @@ import { routes } from 'src/app/shared/routes/routes';
 import { StaffService } from '../../staff/service/staff.service';
 import { Router } from '@angular/router';
 import { PatientMService } from '../service/patient-m.service';
+import { DoctorService } from '../../doctors/service/doctor.service';
 
 @Component({
   selector: 'app-add-patient-m',
@@ -54,6 +55,7 @@ export class AddPatientMComponent {
   
   constructor(
     public patientService:PatientMService,
+    public doctorService:DoctorService,
     public router: Router
   ){
 
@@ -61,6 +63,7 @@ export class AddPatientMComponent {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
+    this.doctorService.closeMenuSidebar();
   }
 
 

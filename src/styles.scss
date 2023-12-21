@@ -227,3 +227,12 @@ ngx-material-timepicker-content {
   .sidebar-overlay.opened {
     display: none !important;
 }
+
+
+//cerrar modal
+@media(max-width:768px){
+  .cerrar{
+    left: -250px ;
+  }
+
+}

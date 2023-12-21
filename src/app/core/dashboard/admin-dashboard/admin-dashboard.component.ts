@@ -21,6 +21,7 @@ import { Sort } from '@angular/material/sort';
 import { DataService } from 'src/app/shared/data/data.service';
 import { recentPatients, upcomingAppointments } from 'src/app/shared/models/models';
 import { DashboardService } from '../service/dashboard.service';
+import { DoctorService } from 'src/app/medical/doctors/service/doctor.service';
 export type ChartOptions = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   series: ApexAxisChartSeries | any;
@@ -101,7 +102,9 @@ export class AdminDashboardComponent {
 
   constructor(
     public data : DataService,
-    public dashboardService : DashboardService
+    public dashboardService : DashboardService,
+    public doctorService : DoctorService,
+    
     ) {
       this.chartOptionsOne = {
         chart: {
@@ -258,7 +261,8 @@ export class AdminDashboardComponent {
   }
 
   ngOnInit(){
-    
+    this.doctorService.closeMenuSidebar();
+    window.scrollTo(0, 0);
     this.getDashboardAdmin();
     this.getDashboardAdminYear();
     let USER = localStorage.getItem("user");

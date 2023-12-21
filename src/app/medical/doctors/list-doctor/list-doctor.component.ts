@@ -47,6 +47,7 @@ export class ListDoctorComponent {
   }
   ngOnInit() {
     window.scrollTo(0, 0);
+    this.doctorService.closeMenuSidebar();
     this.getTableData();
   }
   private getTableData(): void {

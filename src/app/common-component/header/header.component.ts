@@ -78,10 +78,11 @@ export class HeaderComponent {
       /* eslint no-var: off */
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       var sidebar:any = document.getElementById('sidebar')
-  
+    
       if (this.addClass) {
         root.classList.add('menu-opened');
         sidebar.classList.add('opened');
+        
       }
       else {
         root.classList.remove('menu-opened');
@@ -93,12 +94,13 @@ export class HeaderComponent {
   public toggleMobileSideBar(): void {
     this.sideBar.switchMobileSideBarPosition();
     
-      this.addClass = !this.addClass;
-      /* eslint no-var: off */
-      var root = document.getElementsByTagName( 'html' )[0];
-      /* eslint no-var: off */
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      var sidebar:any = document.getElementById('sidebar')
+    this.addClass = !this.addClass;
+    /* eslint no-var: off */
+    var root = document.getElementsByTagName( 'html' )[0];
+    /* eslint no-var: off */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    var sidebar:any = document.getElementById('sidebar')
+    sidebar.classList.remove('cerrar');
   
       if (this.addClass) {
         root.classList.add('menu-opened');
@@ -109,6 +111,8 @@ export class HeaderComponent {
         sidebar.classList.remove('opened');
       }
     }
+
+
 
     logout(){
       this.authService.logout();

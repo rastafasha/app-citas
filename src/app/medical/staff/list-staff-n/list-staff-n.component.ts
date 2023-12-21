@@ -5,6 +5,7 @@ import { StaffService } from '../service/staff.service';
 import { FileSaverService } from 'ngx-filesaver';
 import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
+import { DoctorService } from '../../doctors/service/doctor.service';
 
 declare var $:any;  
 
@@ -40,14 +41,16 @@ export class ListStaffNComponent {
   public staff_selected:any;
   public text_validation:any;
  
-
+  public addClass = false;
   constructor(
     public staffService: StaffService,
+    public doctorService: DoctorService,
     private fileSaver: FileSaverService
     ){
 
   }
   ngOnInit() {
+    this.doctorService.closeMenuSidebar();
     window.scrollTo(0, 0);
     this.getTableData();
   }
@@ -279,6 +282,6 @@ export class ListStaffNComponent {
   }
 
   
-
+  
 
 }

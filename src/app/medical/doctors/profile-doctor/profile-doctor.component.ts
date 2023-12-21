@@ -43,6 +43,7 @@ constructor(
 
 ngOnInit(): void {
   window.scrollTo(0, 0);
+  this.doctorService.closeMenuSidebar();
   this.activatedRoute.params.subscribe((resp:any)=>{
     // console.log(resp);
     this.doctor_id = resp.id;

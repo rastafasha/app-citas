@@ -23,6 +23,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { pageSelection, apiResultFormat, patientDashboard } from 'src/app/shared/models/models';
 import { DashboardService } from '../service/dashboard.service';
 import { ActivatedRoute } from '@angular/router';
+import { DoctorService } from 'src/app/medical/doctors/service/doctor.service';
 interface data {
   value: string ;
 }
@@ -140,6 +141,7 @@ export class PatientDashboardComponent implements OnInit {
     private data: DataService,
     public dashboardService:DashboardService,
     public activatedRoute: ActivatedRoute,
+    public doctorService: DoctorService,
     ) {
     this.carousel1 = this.data.carousel1;
     this.carousel2 = this.data.carousel2;
@@ -394,6 +396,7 @@ export class PatientDashboardComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.doctorService.closeMenuSidebar();
     this.getTableData();
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');

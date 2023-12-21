@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { routes } from 'src/app/shared/routes/routes';
 import { StaffService } from '../service/staff.service';
 import { Router } from '@angular/router';
+import { DoctorService } from '../../doctors/service/doctor.service';
 
 @Component({
   selector: 'app-add-staff-n',
@@ -31,16 +32,20 @@ export class AddStaffNComponent {
   valid_form:boolean = false;
   public text_success:string = '';
   public text_validation:string = '';
-  
+
+  public addClass = false;
 
   constructor(
     public staffService:StaffService,
-    public router: Router
+    public router: Router,
+    public doctorService: DoctorService,
+
   ){
 
   }
 
   ngOnInit(): void {
+    this.doctorService.closeMenuSidebar();
     window.scrollTo(0, 0);
     this.getRoles();
   }
@@ -119,5 +124,7 @@ export class AddStaffNComponent {
 
 
   }
+
+  
   
 }

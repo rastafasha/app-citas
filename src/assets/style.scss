@@ -6722,7 +6722,7 @@ a.voice-icon {
   }
 }
 .sidebar-overlay {
-  display: none;
+  display: none !important;
   position: fixed;
   z-index: 90;
   height: 100%;

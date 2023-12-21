@@ -73,6 +73,7 @@ export class AddDoctorComponent {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
+    this.doctorService.closeMenuSidebar();
     this.getConfig();
   }
 

@@ -3,6 +3,7 @@ import { routes } from 'src/app/shared/routes/routes';
 import {DataService} from 'src/app/shared/data/data.service';
 import { RolesService } from '../service/roles.service';
 import { Router } from '@angular/router';
+import { DoctorService } from '../../doctors/service/doctor.service';
 @Component({
   selector: 'app-add-role-user',
   templateUrl: './add-role-user.component.html',
@@ -21,6 +22,7 @@ export class AddRoleUserComponent  {
   constructor(
     public dataService: DataService,
     public roleService: RolesService,
+    public doctorService: DoctorService,
     public router: Router,
   ){
 
@@ -28,6 +30,7 @@ export class AddRoleUserComponent  {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
+    this.doctorService.closeMenuSidebar();
    this.sideBar = this.dataService.sideBar[0].menu;
   }
 

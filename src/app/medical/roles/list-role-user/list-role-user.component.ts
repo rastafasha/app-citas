@@ -6,6 +6,7 @@ import { RolesService } from '../service/roles.service';
 import { FileSaverService } from 'ngx-filesaver';
 import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
+import { DoctorService } from '../../doctors/service/doctor.service';
 declare var $:any;    
 @Component({
   selector: 'app-list-role-user',
@@ -39,12 +40,14 @@ export class ListRoleUserComponent {
 
   constructor(
     public rolesService: RolesService,
+    public doctorService: DoctorService,
     private fileSaver: FileSaverService
     ){
 
   }
   ngOnInit() {
     window.scrollTo(0, 0);
+    this.doctorService.closeMenuSidebar();
     this.getTableData();
   }
   private getTableData(): void {

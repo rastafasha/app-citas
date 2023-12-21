@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { routes } from 'src/app/shared/routes/routes';
 import { AppointmentService } from '../service/appointment.service';
+import { DoctorService } from '../../doctors/service/doctor.service';
 
 @Component({
   selector: 'app-add-appointments',
@@ -45,12 +46,14 @@ export class AddAppointmentsComponent {
 
   constructor(
     public appointmentService:AppointmentService,
+    public doctorService:DoctorService,
     public router: Router
   ){
 
   }
 
   ngOnInit(): void {
+    this.doctorService.closeMenuSidebar();
     window.scrollTo(0, 0);
     this.appointmentService.listConfig().subscribe((resp:any)=>{
       this.hours = resp.hours;

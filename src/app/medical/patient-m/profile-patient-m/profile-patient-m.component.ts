@@ -5,6 +5,7 @@ import { DataService } from 'src/app/shared/data/data.service';
 import { patientProfile } from 'src/app/shared/models/models';
 import { routes } from 'src/app/shared/routes/routes';
 import { PatientMService } from '../service/patient-m.service';
+import { DoctorService } from '../../doctors/service/doctor.service';
 
 @Component({
   selector: 'app-profile-patient-m',
@@ -31,11 +32,13 @@ public text_validation:string = '';
 constructor(
   public patientService : PatientMService,
   public activatedRoute: ActivatedRoute,
+  public doctorService: DoctorService,
   )
 {
 }
 ngOnInit(): void {
   window.scrollTo(0, 0);
+  this.doctorService.closeMenuSidebar();
   this.activatedRoute.params.subscribe((resp:any)=>{
     // console.log(resp);
     this.patient_id = resp.id;

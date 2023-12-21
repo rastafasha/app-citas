@@ -5,6 +5,7 @@ import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
 import { FileSaverService } from 'ngx-filesaver';
 import { routes } from 'src/app/shared/routes/routes';
+import { DoctorService } from '../../doctors/service/doctor.service';
 declare var $:any;    
 @Component({
   selector: 'app-list-specialitie',
@@ -34,12 +35,14 @@ export class ListSpecialitieComponent {
   public specialitie_selected:any;
   constructor(
     public specialitiesService: SpecialitieService,
+    public doctorService: DoctorService,
     private fileSaver: FileSaverService
   ){
 
   }
   ngOnInit() {
     window.scrollTo(0, 0);
+    this.doctorService.closeMenuSidebar();
     this.getTableData();
   }
   private getTableData(): void {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SpecialitieService } from '../service/specialitie.service';
+import { DoctorService } from '../../doctors/service/doctor.service';
 
 @Component({
   selector: 'app-add-specialitie',
@@ -14,11 +15,13 @@ export class AddSpecialitieComponent {
   text_validation:any = null;
   constructor(
     public specialitieService: SpecialitieService,
+    public doctorService: DoctorService,
   ) {
     
   }
   ngOnInit(): void {
     window.scrollTo(0, 0);
+    this.doctorService.closeMenuSidebar();
   }
 
   save(){

@@ -42,6 +42,7 @@ export class AtencionMedicaComponent {
   }
 
   ngOnInit(): void {
+    
     window.scrollTo(0, 0);
     this.ativatedRoute.params.subscribe((resp:any)=>{
       this.appointment_id = resp.id;

@@ -5,6 +5,7 @@ import { PatientMService } from '../service/patient-m.service';
 import { FileSaverService } from 'ngx-filesaver';
 import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
+import { DoctorService } from '../../doctors/service/doctor.service';
 
 declare var $:any;  
 @Component({
@@ -21,7 +22,7 @@ export class ListPatientMComponent {
   public showFilter = false;
   public searchDataValue = '';
   public lastIndex = 0;
-  public pageSize = 20;
+  public pageSize = 10;
   public totalDataPatient = 0;
   public skip = 0;
   public limit: number = this.pageSize;
@@ -39,12 +40,14 @@ export class ListPatientMComponent {
 
   constructor(
     public patientService: PatientMService,
+    public doctorService: DoctorService,
     private fileSaver: FileSaverService
     ){
 
   }
   ngOnInit() {
     window.scrollTo(0, 0);
+    this.doctorService.closeMenuSidebar();
     this.getTableData();
   }
 
