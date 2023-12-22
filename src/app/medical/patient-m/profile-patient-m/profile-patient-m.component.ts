@@ -48,13 +48,13 @@ ngOnInit(): void {
 
 getDoctor(){
   this.patientService.showPatientProfile(this.patient_id).subscribe((resp:any)=>{
-    // console.log(resp);
+    console.log(resp);
+    this.appointments= resp.appointments;
     this.num_appointment= resp.num_appointment;
     this.money_of_appointments= resp.money_of_appointments;
     this.num_appointment_pendings= resp.num_appointment_pendings;
     this.patient_selected= resp.patient;
     this.appointment_pendings= resp.appointment_pendings.data;
-    this.appointments= resp.appointments;
 
 
   })
